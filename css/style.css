@@ -83,7 +83,40 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+body {
+  width:100%;
+  color: #000000;
+  text-align: center;
+}
 
+header{
+  width: 100%;
+}
+
+section {
+  width: 100%;
+  border: black 2px solid;
+}
+
+article {
+  border: blue 2px solid;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  margin: 1em;
+  padding: 1em;
+}
+
+article h2{
+  width:100%;
+}
+
+article div{
+  border: 2px solid purple;
+  width: 80%;
+  height: 50px;
+  margin: 10px 10%;
+}
 /* ==========================================================================
    Helper classes
    ========================================================================== */
