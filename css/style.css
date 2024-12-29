@@ -112,9 +112,9 @@ article h2{
 }
 
 article div{
-  border: 2px solid purple;
+  /*border: 2px solid purple;*/
   width: 80%;
-  height: 50px;
+  min-height: 50px;
   margin: 10px 10%;
 }
 /* ==========================================================================
