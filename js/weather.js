@@ -5,6 +5,7 @@ const getWeatherData = async function () {
     console.log(data);
     console.log(data.temperature);
     displayWeatherData(data);
+    checkWind(data);
 };
 
 getWeatherData();
@@ -16,3 +17,16 @@ const displayWeatherData = function (data) {
     <p>${data.temperature}</p>
     <p>Wind: ${data.wind}</p>`;
 };
+
+const checkWind = function (data){
+    console.log(data.wind);
+    const windSpeed= parseInt(data.wind);
+    console.log(windSpeed);
+    if (windSpeed <= 21) {
+        console.log("Paddle Board");
+        const paddleMessage = document.createElement("p");
+        paddleMessage.innerText = "It's paddle boarding weather!";
+        weatherInfo.appendChild(paddleMessage);
+    }
+}
+
