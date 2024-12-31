@@ -84,15 +84,17 @@ textarea {
    Author's custom styles
    ========================================================================== */
 body {
-  width:100%;
+  width:100vw;
+  height: 100vh;
   color: #000000;
   text-align: center;
-  background-image: url("../img/pexels-pixmike-413195.jpg");
+  /*background-image: radial-gradient(closest-side at 10% 5%, yellow, rgb(38, 189, 244));*/
+  background-image: linear-gradient(to bottom right, yellow, rgb(38, 189, 244) 40%);
 }
 
 header{
   width: 100%;
-  background: #FFFFFF;
+  /*background: #FFFFFF;*/
 }
 
 h1{
