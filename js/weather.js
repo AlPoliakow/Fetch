@@ -22,11 +22,14 @@ const checkWind = function (data){
     console.log(data.wind);
     const windSpeed= parseInt(data.wind);
     console.log(windSpeed);
-    if (windSpeed <= 21) {
+    const paddleMessage = document.createElement("p");
+    weatherInfo.appendChild(paddleMessage);
+    if (windSpeed <= 20) {
         console.log("Paddle Board");
-        const paddleMessage = document.createElement("p");
         paddleMessage.innerText = "It's paddle boarding weather!";
-        weatherInfo.appendChild(paddleMessage);
+    } else {
+        console.log("Too Windy");
+        paddleMessage.innerText = "It's too windy to paddle board!";
     }
 }
 

@@ -89,7 +89,7 @@ body {
   color: #000000;
   text-align: center;
   /*background-image: radial-gradient(closest-side at 10% 5%, yellow, rgb(38, 189, 244));*/
-  background-image: linear-gradient(to bottom right, yellow, rgb(38, 189, 244) 40%);
+  background-image: linear-gradient(to bottom right, yellow, rgb(38, 189, 244) 35%);
 }
 
 header{
