@@ -1,9 +1,9 @@
 //function to fetch weather data
 const getWeatherData = async function () {
-    const request = await fetch(`https://goweather.herokuapp.com/weather/{Melbourne}`);
+    const request = await fetch(`http://api.weatherapi.com/v1/current.json?key=935da16f3bf140a4872111650250201&q=Mallacoota&aqi=no`);
     const data = await request.json();
     console.log(data);
-    console.log(data.temperature);
+    console.log(data.current.temp_c);
     displayWeatherData(data);
     checkWind(data);
 };
@@ -13,14 +13,14 @@ getWeatherData();
 //display the fetched Weather data
 const displayWeatherData = function (data) {
     const weatherInfo = document.querySelector("#weatherInfo");
-    weatherInfo.innerHTML = `<p>${data.description}</p>
-    <p>${data.temperature}</p>
-    <p>Wind: ${data.wind}</p>`;
+    weatherInfo.innerHTML = `<p>${data.current.condition.text}</p>
+    <p>${data.current.temp_c} degrees</p>
+    <p>Wind: ${data.current.wind_kph} kmph</p>`;
 };
 
 const checkWind = function (data){
     console.log(data.wind);
-    const windSpeed= parseInt(data.wind);
+    const windSpeed= parseInt(data.current.wind_kph);
     console.log(windSpeed);
     const paddleMessage = document.createElement("p");
     weatherInfo.appendChild(paddleMessage);
