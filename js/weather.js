@@ -23,7 +23,8 @@ const checkWind = function (data){
     const windSpeed= parseInt(data.current.wind_kph);
     console.log(windSpeed);
     const paddleMessage = document.createElement("p");
-    weatherInfo.appendChild(paddleMessage);
+    const activitiesInfo = document.querySelector("#activitiesInfo");
+    activitiesInfo.appendChild(paddleMessage);
     if (windSpeed <= 20) {
         console.log("Paddle Board");
         paddleMessage.innerText = "It's paddle boarding weather!";
