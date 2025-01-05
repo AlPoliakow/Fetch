@@ -60,11 +60,14 @@ const sunriseTomorrow = function (forecastData) {
      console.log(confirmedSunriseTime);
      const sunriseCloud = confirmedSunriseTime.cloud;
      console.log(sunriseCloud);
+     const sunriseWindow = forecastTomorrow.hour[(sunriseTimeCheck + 1)];
+     console.log(sunriseWindow);
+     const sunriseWindowCloud = sunriseWindow.cloud;
+     console.log(sunriseWindowCloud);
      //display information
     const sunriseMessage = document.createElement("p");
     activitiesInfo.appendChild(sunriseMessage);
-        sunriseMessage.innerText = `Sunrise is at ${sunriseTomorrow} tomorrow and it will be ${sunriseCloud}% cloudy`;
-
+        sunriseMessage.innerText = `Sunrise is at ${sunriseTomorrow} tomorrow and it will be ${sunriseCloud}-${sunriseWindowCloud}% cloudy`;
 };
 
 
