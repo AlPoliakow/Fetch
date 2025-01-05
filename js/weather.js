@@ -21,7 +21,7 @@ const checkWind = function (data){
     activitiesInfo.appendChild(paddleMessage);
     if (windSpeed <= 20) {
         console.log("Paddle Board");
-        paddleMessage.innerText = "It's paddle boarding weather!";
+        paddleMessage.innerText = "It's paddle boarding weather right now!";
     } else {
         console.log("Too Windy");
         paddleMessage.innerText = "It's too windy to paddle board!";
