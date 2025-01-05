@@ -53,10 +53,18 @@ const sunriseTomorrow = function (forecastData) {
     console.log(forecastTomorrow);
     const sunriseTomorrow = forecastTomorrow.astro.sunrise;
     console.log(sunriseTomorrow);
-    //display information
+    //check cloud at sunrise
+    const sunriseTimeCheck = parseInt(sunriseTomorrow);
+    console.log(sunriseTimeCheck);
+     const confirmedSunriseTime = forecastTomorrow.hour[sunriseTimeCheck];
+     console.log(confirmedSunriseTime);
+     const sunriseCloud = confirmedSunriseTime.cloud;
+     console.log(sunriseCloud);
+     //display information
     const sunriseMessage = document.createElement("p");
     activitiesInfo.appendChild(sunriseMessage);
-        sunriseMessage.innerText = `Sunrise is at ${sunriseTomorrow} tomorrow`;
+        sunriseMessage.innerText = `Sunrise is at ${sunriseTomorrow} tomorrow and it will be ${sunriseCloud}% cloudy`;
+
 };
 
 
