@@ -10,6 +10,17 @@ const getWeatherData = async function () {
 
 getWeatherData();
 
+//get forecast
+const getForecast = async function () {
+    const request = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=935da16f3bf140a4872111650250201&q=Mallacoota&days=5&aqi=no&alerts=no`);
+    const data = await request.json();
+    console.log(data);
+    //displayWeatherData(data);
+    //checkWind(data);
+};
+
+getForecast();
+
 //display the fetched Weather data
 const displayWeatherData = function (data) {
     const weatherInfo = document.querySelector("#weatherInfo");
