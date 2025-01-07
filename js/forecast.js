@@ -20,18 +20,18 @@ const sunriseTomorrow = function (forecastData) {
     //check cloud at sunrise
     const sunriseTimeCheck = parseInt(sunriseTomorrow);
     console.log(sunriseTimeCheck);
-     const confirmedSunriseTime = forecastTomorrow.hour[sunriseTimeCheck];
-     console.log(confirmedSunriseTime);
-     const sunriseCloud = confirmedSunriseTime.cloud;
-     console.log(sunriseCloud);
-     const sunriseWindow = forecastTomorrow.hour[(sunriseTimeCheck + 1)];
-     console.log(sunriseWindow);
-     const sunriseWindowCloud = sunriseWindow.cloud;
-     console.log(sunriseWindowCloud);
-     //display information
+    const confirmedSunriseTime = forecastTomorrow.hour[sunriseTimeCheck];
+    console.log(confirmedSunriseTime);
+    const sunriseCloud = confirmedSunriseTime.cloud;
+    console.log(sunriseCloud);
+    const sunriseWindow = forecastTomorrow.hour[(sunriseTimeCheck + 1)];
+    console.log(sunriseWindow);
+    const sunriseWindowCloud = sunriseWindow.cloud;
+    console.log(sunriseWindowCloud);
+    //display information
     const sunriseMessage = document.createElement("p");
     activitiesInfo.appendChild(sunriseMessage);
-        sunriseMessage.innerText = `Sunrise is at ${sunriseTomorrow} tomorrow and it will be ${sunriseCloud}-${sunriseWindowCloud}% cloudy`;
+    sunriseMessage.innerText = `Sunrise is at ${sunriseTomorrow} tomorrow and it will be ${sunriseCloud}-${sunriseWindowCloud}% cloudy`;
 };
 
 //get tonights cloud cover for star gaxing and display information
@@ -49,17 +49,44 @@ const cloudTonight = function (forecastData) {
     const midStarCloud = midStar.cloud;
     const lateStarCloud = lateStar.cloud;
     console.log(earlyStarCloud, midStarCloud, lateStarCloud);
-    const starGazeMessage = document.createElement("p");
+    // create section for stargazing message
+    const starGazeMessage = document.createElement("div");
     activitiesInfo.appendChild(starGazeMessage);
-        //earlyNumber = parseInt(earlyStarCloud);
-        //midNumber = parseInt(midStarCloud);
-       // lateNumber = parseInt(lateStarCloud);
-       // if (earlyNumber <= 10) {
-            //starGazeMessage.innerText = "It should be perfect for stargazing tonight";
-       // }
-        starGazeMessage.innerHTML = `At 9pm it will be ~${earlyStarCloud}% cloudy<br>
-        At 10pm it will be ~${midStarCloud}% cloudy<br>
-        At 11pm it will be ~${lateStarCloud}% cloudy`;
+    // change data into numbers
+    earlyNumber = parseInt(earlyStarCloud);
+    midNumber = parseInt(midStarCloud);
+    lateNumber = parseInt(lateStarCloud);
+    //create 9pm message
+    const nineMessage = document.createElement("p");
+    starGazeMessage.appendChild(nineMessage);
+     //create 10pm message
+     const tenMessage = document.createElement("p");
+     starGazeMessage.appendChild(tenMessage);
+     //create 11pm message
+     const elevenMessage = document.createElement("p");
+     starGazeMessage.appendChild(elevenMessage);
+      
+    if (earlyNumber <= 10) {
+        nineMessage.innerHTML = "<span>9pm:</span> It should be perfect for stargazing";
+    } else if (earlyNumber >= 10 && earlyNumber <= 30) {
+        nineMessage.innerHTML = "<span>9pm:</span> It might be alright to stargaze"
+    } else {
+        nineMessage.innerHTML = "<span>9pm:</span> Not ideal conditions for stargazing"
+    }
+    if (midNumber <= 10) {
+        tenMessage.innerHTML = "<span>10pm:</span> It should be perfect for stargazing";
+    } else if (midNumber >= 10 && midNumber <= 30) {
+        tenMessage.innerHTML = "<span>10pm:</span> It might be alright to stargaze"
+    } else {
+        tenMessage.innerHTML = "<span>10pm:</span> Not ideal conditions for stargazing"
+    }
+    if (lateNumber <= 10) {
+        elevenMessage.innerHTML = "<span>11pm:</span> It should be perfect for stargazing";
+    } else if (lateNumber >= 10 && lateNumber <= 30) {
+        elevenMessage.innerHTML = "<span>11pm:</span> It might be alright to stargaze"
+    } else {
+        elevenMessage.innerHTML = "<span>11pm:</span> Not ideal conditions for stargazing"
+    }
 };
 
 

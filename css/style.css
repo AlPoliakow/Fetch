@@ -92,6 +92,10 @@ body {
   background-image: linear-gradient(to bottom right, yellow, rgb(38, 189, 244) 35%);
 }
 
+span {
+  font-weight: 900;
+}
+
 header{
   width: 100%;
   /*background: #FFFFFF;*/
