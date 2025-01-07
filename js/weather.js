@@ -29,8 +29,8 @@ const checkWind = function (data){
 
 //display the fetched Weather data
 const displayWeatherData = function (data) {
-    weatherInfo.innerHTML = `<p>${data.current.condition.text}</p>
-    <p>${data.current.temp_c} degrees</p>
-    <p>Wind: ${data.current.wind_kph} kmph</p>`;
+    weatherInfo.innerHTML = `<p><span>Currently:</span> ${data.current.condition.text}</p>
+    <p><span>Temperature:</span> ${data.current.temp_c} degrees</p>
+    <p><span>Wind:</span> ${data.current.wind_kph} kmph</p>`;
 };
 
