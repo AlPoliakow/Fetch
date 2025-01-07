@@ -5,6 +5,7 @@ const getForecast = async function () {
     console.log(forecastData);
     //console.log(forecastData.forecast.forecastday[1]);// gives tomorrow's forecast
     sunriseTomorrow(forecastData);
+    cloudTonight(forecastData);
 };
 
 getForecast();
@@ -32,5 +33,36 @@ const sunriseTomorrow = function (forecastData) {
     activitiesInfo.appendChild(sunriseMessage);
         sunriseMessage.innerText = `Sunrise is at ${sunriseTomorrow} tomorrow and it will be ${sunriseCloud}-${sunriseWindowCloud}% cloudy`;
 };
+
+//get tonights cloud cover for star gaxing and display information
+const cloudTonight = function (forecastData) {
+    //isolate data
+    const forecastToday = forecastData.forecast.forecastday[0];
+    console.log(forecastToday);
+    const earlyStar = forecastToday.hour[21];
+    console.log(earlyStar);
+    const midStar = forecastToday.hour[22];
+    console.log(midStar);
+    const lateStar = forecastToday.hour[23];
+    console.log(lateStar);
+    const earlyStarCloud = earlyStar.cloud;
+    const midStarCloud = midStar.cloud;
+    const lateStarCloud = lateStar.cloud;
+    console.log(earlyStarCloud, midStarCloud, lateStarCloud);
+    const starGazeMessage = document.createElement("p");
+    activitiesInfo.appendChild(starGazeMessage);
+        //earlyNumber = parseInt(earlyStarCloud);
+        //midNumber = parseInt(midStarCloud);
+       // lateNumber = parseInt(lateStarCloud);
+       // if (earlyNumber <= 10) {
+            //starGazeMessage.innerText = "It should be perfect for stargazing tonight";
+       // }
+        starGazeMessage.innerHTML = `At 9pm it will be ~${earlyStarCloud}% cloudy<br>
+        At 10pm it will be ~${midStarCloud}% cloudy<br>
+        At 11pm it will be ~${lateStarCloud}% cloudy`;
+};
+
+
+
 
 
