@@ -29,8 +29,7 @@ const sunriseTomorrow = function (forecastData) {
     const sunriseWindowCloud = sunriseWindow.cloud;
     console.log(sunriseWindowCloud);
     //display information
-    const sunriseMessage = document.createElement("p");
-    activitiesInfo.appendChild(sunriseMessage);
+    const sunriseMessage = document.querySelector(".sunrise");
     sunriseMessage.innerText = `Sunrise is at ${sunriseTomorrow} tomorrow and it will be ${sunriseCloud}-${sunriseWindowCloud}% cloudy`;
 };
 
@@ -50,8 +49,7 @@ const cloudTonight = function (forecastData) {
     const lateStarCloud = lateStar.cloud;
     console.log(earlyStarCloud, midStarCloud, lateStarCloud);
     // create section for stargazing message
-    const starGazeMessage = document.createElement("div");
-    activitiesInfo.appendChild(starGazeMessage);
+    const starGazeMessage = document.querySelector(".star");
     // change data into numbers
     earlyNumber = parseInt(earlyStarCloud);
     midNumber = parseInt(midStarCloud);
