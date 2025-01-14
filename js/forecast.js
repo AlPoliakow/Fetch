@@ -6,6 +6,7 @@ const getForecast = async function () {
     //console.log(forecastData.forecast.forecastday[1]);// gives tomorrow's forecast
     sunriseTomorrow(forecastData);
     cloudTonight(forecastData);
+    rainToday(forecastData);
 };
 
 getForecast();
@@ -85,6 +86,14 @@ const cloudTonight = function (forecastData) {
     } else {
         elevenMessage.innerHTML = "<span>11pm:</span> Not ideal conditions for stargazing"
     }
+};
+
+//check rain and display information
+const rainToday = function (forecastData) {
+    //isolate data
+    const rainForecastToday = forecastData.forecast.forecastday[0];
+    console.log(rainForecastToday);
+    console.log(rainForecastToday.hour[6], rainForecastToday.hour[7], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6]);
 };
 
 

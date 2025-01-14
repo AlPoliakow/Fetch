@@ -90,6 +90,7 @@ body {
   text-align: center;
   /*background-image: radial-gradient(closest-side at 10% 5%, yellow, rgb(38, 189, 244));*/
   background-image: linear-gradient(to bottom right, yellow, rgb(38, 189, 244) 35%);
+  box-sizing: border-box;
 }
 
 span {
@@ -106,29 +107,46 @@ h1{
   margin: 0;
 }
 
-section {
-  width: 100%;
+main {
+  box-sizing: border-box;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
 }
 
-article {
+section {
+  width: 100vw;
+  box-sizing: border-box;
+}
+
+.weather,
+.activities {
   border: rgb(0, 0, 0) 2px solid;
   background: #FFFFFF;
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
-  margin: 1em;
-  padding: 1em;
+  margin: 1em 2em;
+  padding: 1em 0.5em;
 }
 
-article h2{
-  width:100%;
+article {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
 }
 
-article div{
-  /*border: 2px solid purple;*/
+div{
+  border: 2px solid purple;
   width: 80%;
   min-height: 50px;
-  margin: 10px 10%;
+  margin: 10px 0;
+}
+
+.star{
+  border: none;
+  margin: 0;
 }
 /* ==========================================================================
    Helper classes

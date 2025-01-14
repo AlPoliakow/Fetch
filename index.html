@@ -26,21 +26,29 @@
   <header>
     <h1>Whether the Weather</h1>
   </header>
-  <section>
-    <article class="weather">
+  <main>
+    <section class="weather">
       <h2>Mallacoota Weather</h2>
       <div id="weatherInfo"></div>
+    </section>
+    <section class="activities">
       <h2>Activities Forecast</h2>
       <div id="activitiesInfo">
-        <h3>Paddleboarding</h3>
-        <p class="paddle"></p>
-        <h3>Star Gazing</h3>
-        <div class="star"></div>
-        <h3>Sunrise tomorrow</h3>
-        <p class="sunrise"></p>
+        <article class="paddleContainer">
+          <h3>Paddleboarding</h3>
+          <p class="paddle"></p>
+        </article>
+        <article class="starContainer">
+          <h3>Star Gazing</h3>
+          <div class="star"></div>
+        </article>
+        <article class="sunriseContainer">
+          <h3>Sunrise tomorrow</h3>
+          <p class="sunrise"></p>
+        </article>
       </div>
-    </article>
-  </section>
+    </section>
+  </main>
   <footer>
   </footer>
   <script src="js/weather.js"></script>
