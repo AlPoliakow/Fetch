@@ -8,24 +8,9 @@ const getWeatherData = async function () {
     console.log(data);
     console.log(data.current.temp_c);
     displayWeatherData(data);
-    checkWind(data);
 };
 
 getWeatherData();
-
-//check wind and notify if paddle boarding is safe
-const checkWind = function (data){
-    const windSpeed= parseInt(data.current.wind_kph);
-    console.log(windSpeed);
-    const paddleMessage = document.querySelector(".paddle");
-    if (windSpeed <= 20) {
-        console.log("Paddle Board");
-        paddleMessage.innerText = "It's paddle boarding weather right now!";
-    } else {
-        console.log("Too Windy");
-        paddleMessage.innerText = "It's too windy to paddle board!";
-    }
-};
 
 //display the fetched Weather data
 const displayWeatherData = function (data) {

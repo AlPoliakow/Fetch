@@ -7,9 +7,12 @@ const getForecast = async function () {
     sunriseTomorrow(forecastData);
     cloudTonight(forecastData);
     rainToday(forecastData);
+    checkBoardWind(forecastData);
 };
 
 getForecast();
+
+
 
 //get tomorrow's sunrise time and display information
 const sunriseTomorrow = function (forecastData) {
@@ -33,6 +36,8 @@ const sunriseTomorrow = function (forecastData) {
     const sunriseMessage = document.querySelector(".sunrise");
     sunriseMessage.innerText = `Sunrise is at ${sunriseTomorrow} tomorrow and it will be ${sunriseCloud}-${sunriseWindowCloud}% cloudy`;
 };
+
+
 
 //get tonights cloud cover for star gaxing and display information
 const cloudTonight = function (forecastData) {
@@ -95,6 +100,37 @@ const rainToday = function (forecastData) {
     console.log(rainForecastToday);
     console.log(rainForecastToday.hour[6], rainForecastToday.hour[7], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6]);
 };
+
+//check wind and notify if paddle boarding is safe
+const checkBoardWind = function (forecastData){
+    boardForecastToday = forecastData.forecast.forecastday[0];
+    console.log(boardForecastToday);
+     const seven = boardForecastToday.hour[7];
+     const eight = boardForecastToday.hour[8];
+     const nine = boardForecastToday.hour[9];
+     const ten = boardForecastToday.hour[10];
+     const eleven = boardForecastToday.hour[11];
+     const twelve = boardForecastToday.hour[12];
+     const thirteen = boardForecastToday.hour[13];
+     const fourteen = boardForecastToday.hour[14];
+     const fifteen = boardForecastToday.hour[15];
+     const sixteen = boardForecastToday.hour[16];
+     const seventeen = boardForecastToday.hour[17];
+     const eighteen = boardForecastToday.hour[18];
+     const nineteen = boardForecastToday.hour[19];
+     const twenty = boardForecastToday.hour[20];
+    console.log(seven.wind_kph);
+    const paddleMessage = document.querySelector(".paddle");
+    if (seven.wind_kph <= 20) {
+        console.log("Paddle Board");
+        paddleMessage.innerText = "It's was paddle boarding weather at 7am!";
+    } else {
+        console.log("Too Windy");
+        paddleMessage.innerText = "It was too windy to paddle board at 7am!";
+    }
+};
+
+
 
 
 
