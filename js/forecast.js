@@ -105,28 +105,19 @@ const rainToday = function (forecastData) {
 const checkBoardWind = function (forecastData){
     boardForecastToday = forecastData.forecast.forecastday[0];
     console.log(boardForecastToday);
-     const seven = boardForecastToday.hour[7];
-     const eight = boardForecastToday.hour[8];
-     const nine = boardForecastToday.hour[9];
-     const ten = boardForecastToday.hour[10];
-     const eleven = boardForecastToday.hour[11];
-     const twelve = boardForecastToday.hour[12];
-     const thirteen = boardForecastToday.hour[13];
-     const fourteen = boardForecastToday.hour[14];
-     const fifteen = boardForecastToday.hour[15];
-     const sixteen = boardForecastToday.hour[16];
-     const seventeen = boardForecastToday.hour[17];
-     const eighteen = boardForecastToday.hour[18];
-     const nineteen = boardForecastToday.hour[19];
-     const twenty = boardForecastToday.hour[20];
-    console.log(seven.wind_kph);
+    console.log(boardForecastToday.hour);
+    //create an array and check each hour for wind
+    const hourArray = boardForecastToday.hour;
+    const hourMap = hourArray.map((hour)=> hour.wind_kph);
+    console.log(hourMap);
+    console.log(hourMap[6]);
     const paddleMessage = document.querySelector(".paddle");
-    if (seven.wind_kph <= 20) {
+    if (hourMap[6] <= 20) {
         console.log("Paddle Board");
-        paddleMessage.innerText = "It's was paddle boarding weather at 7am!";
+        paddleMessage.innerText = "It's was paddle boarding weather at 6am!";
     } else {
         console.log("Too Windy");
-        paddleMessage.innerText = "It was too windy to paddle board at 7am!";
+        paddleMessage.innerText = "It was too windy to paddle board at 6am!";
     }
 };
 
