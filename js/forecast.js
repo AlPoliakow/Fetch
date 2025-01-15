@@ -1,3 +1,6 @@
+// select section for stargazing message
+const starGazeMessage = document.querySelector(".star");
+
 //get forecast
 const getForecast = async function () {
     const request = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=935da16f3bf140a4872111650250201&q=Mallacoota&days=5&aqi=no&alerts=no`);
@@ -53,28 +56,25 @@ const cloudTonight = function (forecastData) {
     const earlyStarCloud = earlyStar.cloud;
     const midStarCloud = midStar.cloud;
     const lateStarCloud = lateStar.cloud;
-    console.log(earlyStarCloud, midStarCloud, lateStarCloud);
     const starArray = [earlyStarCloud, midStarCloud, lateStarCloud];
     console.log(starArray);
     
-    // create section for stargazing message
-    const starGazeMessage = document.querySelector(".star");
+     //create cloud percent message
+     const cloudMessage = document.createElement("p");
+     starGazeMessage.appendChild(cloudMessage);
+
+     cloudMessage.innerText = `There is predicted to be ${earlyStarCloud}% cloud cover at 9pm, ${midStarCloud}% at 10pm and ${lateStarCloud}% at 11pm`;
 
     // loop
     for (let starCloud in starArray) {
         if (starCloud <= 10){
             console.log("It's predicted to be perfect for stargazing tonight");
-        } else if (starCloud >= 10 && startCloud <= 40) {
+        } else if (starCloud >= 10 && starCloud <= 40) {
             console.log("It's predicted to be alright for stargazing tonight");
         } else {
             console.log("It's predicted to be challenging to stargaze tonight");
         }
       }
-    
-    //create 9pm message
-    //const nineMessage = document.createElement("p");
-   // starGazeMessage.appendChild(nineMessage);
-
     //if (earlyNumber <= 10) {
         //nineMessage.innerHTML = "<span>9pm:</span> It should be perfect for stargazing";
    // } else if (earlyNumber >= 10 && earlyNumber <= 30) {
@@ -92,6 +92,12 @@ const rainToday = function (forecastData) {
     const rainArray = rainForecastToday.hour;
     const rainMap = rainArray.map((hour) => hour.chance_of_rain);
     console.log(rainMap);
+    console.log(rainMap[21], rainMap[22], rainMap[23]);
+    //create star rain message
+    const starRainMessage = document.createElement("p");
+    starGazeMessage.appendChild(starRainMessage);
+    starRainMessage.innerText= `There is a ${rainMap[21]}% chance of rain at 9pm, a ${rainMap[22]}% chance of rain at 10pm and a ${rainMap[23]}% chance of rain at 11pm`
+
 };
 
 
