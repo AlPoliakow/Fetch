@@ -71,8 +71,6 @@ const cloudTonight = function (forecastData) {
         }
       }
     
-
-
     //create 9pm message
     //const nineMessage = document.createElement("p");
    // starGazeMessage.appendChild(nineMessage);
@@ -91,8 +89,11 @@ const rainToday = function (forecastData) {
     //isolate data
     const rainForecastToday = forecastData.forecast.forecastday[0];
     console.log(rainForecastToday);
-    console.log(rainForecastToday.hour[6], rainForecastToday.hour[7], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6], rainForecastToday.hour[6]);
+    const rainArray = rainForecastToday.hour;
+    const rainMap = rainArray.map((hour) => hour.chance_of_rain);
+    console.log(rainMap);
 };
+
 
 //check wind and notify if paddle boarding is safe
 const checkBoardWind = function (forecastData) {
