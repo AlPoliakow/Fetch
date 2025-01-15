@@ -54,43 +54,36 @@ const cloudTonight = function (forecastData) {
     const midStarCloud = midStar.cloud;
     const lateStarCloud = lateStar.cloud;
     console.log(earlyStarCloud, midStarCloud, lateStarCloud);
+    const starArray = [earlyStarCloud, midStarCloud, lateStarCloud];
+    console.log(starArray);
+    
     // create section for stargazing message
     const starGazeMessage = document.querySelector(".star");
-    // change data into numbers
-    earlyNumber = parseInt(earlyStarCloud);
-    midNumber = parseInt(midStarCloud);
-    lateNumber = parseInt(lateStarCloud);
+
+    // loop
+    for (let starCloud in starArray) {
+        if (starCloud <= 10){
+            console.log("It's predicted to be perfect for stargazing tonight");
+        } else if (starCloud >= 10 && startCloud <= 40) {
+            console.log("It's predicted to be alright for stargazing tonight");
+        } else {
+            console.log("It's predicted to be challenging to stargaze tonight");
+        }
+      }
+    
+
+
     //create 9pm message
-    const nineMessage = document.createElement("p");
-    starGazeMessage.appendChild(nineMessage);
-     //create 10pm message
-     const tenMessage = document.createElement("p");
-     starGazeMessage.appendChild(tenMessage);
-     //create 11pm message
-     const elevenMessage = document.createElement("p");
-     starGazeMessage.appendChild(elevenMessage);
-      
-    if (earlyNumber <= 10) {
-        nineMessage.innerHTML = "<span>9pm:</span> It should be perfect for stargazing";
-    } else if (earlyNumber >= 10 && earlyNumber <= 30) {
-        nineMessage.innerHTML = "<span>9pm:</span> It might be alright to stargaze"
-    } else {
-        nineMessage.innerHTML = "<span>9pm:</span> Not ideal conditions for stargazing"
-    }
-    if (midNumber <= 10) {
-        tenMessage.innerHTML = "<span>10pm:</span> It should be perfect for stargazing";
-    } else if (midNumber >= 10 && midNumber <= 30) {
-        tenMessage.innerHTML = "<span>10pm:</span> It might be alright to stargaze"
-    } else {
-        tenMessage.innerHTML = "<span>10pm:</span> Not ideal conditions for stargazing"
-    }
-    if (lateNumber <= 10) {
-        elevenMessage.innerHTML = "<span>11pm:</span> It should be perfect for stargazing";
-    } else if (lateNumber >= 10 && lateNumber <= 30) {
-        elevenMessage.innerHTML = "<span>11pm:</span> It might be alright to stargaze"
-    } else {
-        elevenMessage.innerHTML = "<span>11pm:</span> Not ideal conditions for stargazing"
-    }
+    //const nineMessage = document.createElement("p");
+   // starGazeMessage.appendChild(nineMessage);
+
+    //if (earlyNumber <= 10) {
+        //nineMessage.innerHTML = "<span>9pm:</span> It should be perfect for stargazing";
+   // } else if (earlyNumber >= 10 && earlyNumber <= 30) {
+        //nineMessage.innerHTML = "<span>9pm:</span> It might be alright to stargaze"
+  //  } else {
+        //nineMessage.innerHTML = "<span>9pm:</span> Not ideal conditions for stargazing"
+   // }
 };
 
 //check rain and display information
@@ -102,13 +95,13 @@ const rainToday = function (forecastData) {
 };
 
 //check wind and notify if paddle boarding is safe
-const checkBoardWind = function (forecastData){
+const checkBoardWind = function (forecastData) {
     boardForecastToday = forecastData.forecast.forecastday[0];
     console.log(boardForecastToday);
     console.log(boardForecastToday.hour);
     //create an array and check each hour for wind
     const hourArray = boardForecastToday.hour;
-    const hourMap = hourArray.map((hour)=> hour.wind_kph);
+    const hourMap = hourArray.map((hour) => hour.wind_kph);
     console.log(hourMap);
     console.log(hourMap[6]);
     const paddleMessage = document.querySelector(".paddle");
