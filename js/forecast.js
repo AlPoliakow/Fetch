@@ -1,5 +1,7 @@
 // select section for stargazing message
 const starGazeMessage = document.querySelector(".star");
+// select section for forecast Info
+const forecastMessage = document.querySelector("#forecastInfo");
 
 //get forecast
 const getForecast = async function () {
@@ -7,6 +9,7 @@ const getForecast = async function () {
     const forecastData = await request.json();
     console.log(forecastData);
     //console.log(forecastData.forecast.forecastday[1]);// gives tomorrow's forecast
+    displayForecast(forecastData);
     sunriseTomorrow(forecastData);
     cloudTonight(forecastData);
     rainToday(forecastData);
@@ -15,6 +18,134 @@ const getForecast = async function () {
 
 getForecast();
 
+const displayForecast = function (forecastData) {
+    //isolate data
+    const forecastToday = forecastData.forecast.forecastday[0];
+    console.log(forecastToday);
+    forecastMessage.innerHTML = 
+    `<table>
+            <tr>
+              <th>Time</th>
+              <th>Wind</th>
+              <th>Rain</th>
+              <th>Cloud</th>
+            </tr>
+            <tr>
+              <td>5am</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>6am</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>7am</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>8am</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>9am</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>10am</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>11am</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>12pm</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>1pm</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>2pm</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>3pm</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>4pm</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>5pm</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>6pm</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>7pm</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>8pm</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>9pm</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>10pm</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>11pm</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>`;
+};
 
 
 //get tomorrow's sunrise time and display information
