@@ -22,6 +22,18 @@ const displayForecast = function (forecastData) {
     //isolate data
     const forecastToday = forecastData.forecast.forecastday[0];
     console.log(forecastToday);
+    const dailyArray = forecastToday.hour;
+    const dailyForecastInfo = dailyArray.map(hour => ({
+        condition: hour.condition.text,
+        temperature: hour.temp_c,
+        wind: hour.wind_kph,
+        rain: hour.chance_of_rain,
+        cloud: hour.cloud,
+        uv: hour.uv
+      }));
+      
+      console.log(dailyForecastInfo);
+  
     forecastMessage.innerHTML = 
     `<table>
             <tr>
