@@ -33,7 +33,9 @@ const displayForecast = function (forecastData) {
       }));
       
       console.log(dailyForecastInfo);
-  
+    
+    const filteredDailyForecastArray = dailyForecastInfo.slice(5,24);
+    console.log(filteredDailyForecastArray)
     forecastMessage.innerHTML = 
     `<table>
             <tr>
