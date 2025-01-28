@@ -23,144 +23,39 @@ const displayForecast = function (forecastData) {
     const forecastToday = forecastData.forecast.forecastday[0];
     console.log(forecastToday);
     const dailyArray = forecastToday.hour;
+    console.log(dailyArray);
+
+
     const dailyForecastInfo = dailyArray.map(hour => ({
+        index: hour.time,
         condition: hour.condition.text,
         temperature: hour.temp_c,
         wind: hour.wind_kph,
         rain: hour.chance_of_rain,
         cloud: hour.cloud,
         uv: hour.uv
-      }));
-      
-      console.log(dailyForecastInfo);
-    
-    const filteredDailyForecastArray = dailyForecastInfo.slice(5,24);
-    console.log(filteredDailyForecastArray)
-    forecastMessage.innerHTML = 
-    `<table>
-            <tr>
-              <th>Time</th>
-              <th>Wind</th>
-              <th>Rain</th>
-              <th>Cloud</th>
-            </tr>
-            <tr>
-              <td>5am</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>6am</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>7am</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>8am</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>9am</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>10am</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>11am</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>12pm</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>1pm</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>2pm</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>3pm</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>4pm</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>5pm</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>6pm</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>7pm</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>8pm</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>9pm</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>10pm</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>11pm</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-          </table>`;
-};
+    }));
 
+    console.log(dailyForecastInfo);
+    //const filteredDailyForecastArray = dailyForecastInfo.slice(5, 24);
+    //console.log(filteredDailyForecastArray);
+    dailyForecastInfo.forEach((index, condition, temperature, wind, rain, cloud, uv) => {
+        console.log(index);
+        const row = document.createElement(`tr`);
+        const table = document.querySelector(`table`);
+        table.appendChild(row);
+        row.innerHTML=`
+              <td>${index.index}</td>
+              <td>${index.condition}</td>
+              <td>${index.temperature}</td>
+              <td>${index.wind}</td>
+              <td>${index.rain}</td>
+              <td>${index.cloud}</td>
+              <td>${index.uv}</td>`
+            ;
+    });
+};
+    
 
 //get tomorrow's sunrise time and display information
 const sunriseTomorrow = function (forecastData) {
@@ -203,30 +98,30 @@ const cloudTonight = function (forecastData) {
     const lateStarCloud = lateStar.cloud;
     const starArray = [earlyStarCloud, midStarCloud, lateStarCloud];
     console.log(starArray);
-    
-     //create cloud percent message
-     const cloudMessage = document.createElement("p");
-     starGazeMessage.appendChild(cloudMessage);
 
-     cloudMessage.innerText = `There is predicted to be ${earlyStarCloud}% cloud cover at 9pm, ${midStarCloud}% at 10pm and ${lateStarCloud}% at 11pm`;
+    //create cloud percent message
+    const cloudMessage = document.createElement("p");
+    starGazeMessage.appendChild(cloudMessage);
+
+    cloudMessage.innerText = `There is predicted to be ${earlyStarCloud}% cloud cover at 9pm, ${midStarCloud}% at 10pm and ${lateStarCloud}% at 11pm`;
 
     // loop
     for (let starCloud in starArray) {
-        if (starCloud <= 10){
+        if (starCloud <= 10) {
             console.log("It's predicted to be perfect for stargazing tonight");
         } else if (starCloud >= 10 && starCloud <= 40) {
             console.log("It's predicted to be alright for stargazing tonight");
         } else {
             console.log("It's predicted to be challenging to stargaze tonight");
         }
-      }
+    }
     //if (earlyNumber <= 10) {
-        //nineMessage.innerHTML = "<span>9pm:</span> It should be perfect for stargazing";
-   // } else if (earlyNumber >= 10 && earlyNumber <= 30) {
-        //nineMessage.innerHTML = "<span>9pm:</span> It might be alright to stargaze"
-  //  } else {
-        //nineMessage.innerHTML = "<span>9pm:</span> Not ideal conditions for stargazing"
-   // }
+    //nineMessage.innerHTML = "<span>9pm:</span> It should be perfect for stargazing";
+    // } else if (earlyNumber >= 10 && earlyNumber <= 30) {
+    //nineMessage.innerHTML = "<span>9pm:</span> It might be alright to stargaze"
+    //  } else {
+    //nineMessage.innerHTML = "<span>9pm:</span> Not ideal conditions for stargazing"
+    // }
 };
 
 //check rain and display information
@@ -241,7 +136,7 @@ const rainToday = function (forecastData) {
     //create star rain message
     const starRainMessage = document.createElement("p");
     starGazeMessage.appendChild(starRainMessage);
-    starRainMessage.innerText= `There is a ${rainMap[21]}% chance of rain at 9pm, a ${rainMap[22]}% chance of rain at 10pm and a ${rainMap[23]}% chance of rain at 11pm`
+    starRainMessage.innerText = `There is a ${rainMap[21]}% chance of rain at 9pm, a ${rainMap[22]}% chance of rain at 10pm and a ${rainMap[23]}% chance of rain at 11pm`
 
 };
 
