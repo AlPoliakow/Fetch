@@ -37,14 +37,13 @@ const displayForecast = function (forecastData) {
     }));
 
     console.log(dailyForecastInfo);
-    //const filteredDailyForecastArray = dailyForecastInfo.slice(5, 24);
-    //console.log(filteredDailyForecastArray);
+    
     dailyForecastInfo.forEach((index, condition, temperature, wind, rain, cloud, uv) => {
         console.log(index);
         const row = document.createElement(`tr`);
         const table = document.querySelector(`table`);
         table.appendChild(row);
-        row.innerHTML=`
+        row.innerHTML = `
               <td>${index.index}</td>
               <td>${index.condition}</td>
               <td>${index.temperature}</td>
@@ -55,23 +54,23 @@ const displayForecast = function (forecastData) {
             ;
     });
 
-    dailyForecastInfo.forEach((index, condition, temperature, wind, rain, cloud, uv) => {
-        console.log(index);
-        const activityRow = document.createElement(`tr`);
-        const activityTable = document.querySelector(`#activitiesPrediction`);
-        activityTable.appendChild(activityRow);
-            
-        activityRow.innerHTML=`
+    // display activity data in a table based on time 
+    const filteredDailyForecastArray = dailyForecastInfo.slice(5, 21);
+    //console.log(filteredDailyForecastArray);
+    filteredDailyForecastArray.forEach((index, condition, temperature, wind, rain, cloud, uv) => {
+                const activityRow = document.createElement(`tr`);
+            const activityTable = document.querySelector(`#activitiesPrediction`);
+            activityTable.appendChild(activityRow);
+            activityRow.innerHTML = `
               <td>${index.index}</td>
               <td>Paddle function tbc</td>
               <td>Hiking function tbc</td>
               <td>Indoor function tbc</td>
-              <td>Beach function tbc</td>
-              <td>Star Gazing function tbc</td>`
-            ;
+              <td>Beach function tbc</td>`
+                ;
     });
 };
-    
+
 
 //get tomorrow's sunrise time and display information
 const sunriseTomorrow = function (forecastData) {
