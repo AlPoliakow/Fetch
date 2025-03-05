@@ -84,7 +84,7 @@ textarea {
    Author's custom styles
    ========================================================================== */
 body {
-  width:100vw;
+  width: 100vw;
   height: 100vh;
   color: #000000;
   text-align: center;
@@ -97,14 +97,18 @@ span {
   font-weight: 900;
 }
 
-header{
+header {
   width: 100%;
   /*background: #FFFFFF;*/
 }
 
-h1{
+h1 {
   padding: 1em;
   margin: 0;
+  font-family: "Cinzel", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
 }
 
 main {
@@ -129,7 +133,7 @@ section {
   flex-flow: row wrap;
   margin: 0.5em;
   padding: 1em 0;
-  width:100%;
+  width: 100%;
 }
 
 table {
@@ -142,17 +146,18 @@ article {
   flex-flow: row wrap;
 }
 
-div{
+div {
   border: 2px solid purple;
-  width:100%;
+  width: 100%;
   min-height: 50px;
   margin: 10px 1em;
 }
 
-.star{
+.star {
   border: none;
   margin: 0;
 }
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
@@ -241,9 +246,9 @@ div{
 }
 
 @media print,
-  (-webkit-min-device-pixel-ratio: 1.25),
-  (min-resolution: 1.25dppx),
-  (min-resolution: 120dpi) {
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 1.25dppx),
+(min-resolution: 120dpi) {
   /* Style adjustments for high resolution devices */
 }
 
@@ -254,6 +259,7 @@ div{
    ========================================================================== */
 
 @media print {
+
   *,
   *::before,
   *::after {
@@ -313,4 +319,3 @@ div{
     page-break-after: avoid;
   }
 }
-

@@ -55,12 +55,15 @@ const displayForecast = function (forecastData) {
     });
 
     // display activity data in a table based on time 
-    const filteredDailyForecastArray = dailyForecastInfo.slice(5, 21);
+    const filteredDailyForecastArray = dailyForecastInfo.slice(6, 21);
     //console.log(filteredDailyForecastArray);
     filteredDailyForecastArray.forEach((index, condition, temperature, wind, rain, cloud, uv) => {
                 const activityRow = document.createElement(`tr`);
             const activityTable = document.querySelector(`#activitiesPrediction`);
             activityTable.appendChild(activityRow);
+            if (index.wind <= 20) {
+                console.log(`It's safe to paddle board`);
+            }
             activityRow.innerHTML = `
               <td>${index.index}</td>
               <td>Paddle function tbc</td>
