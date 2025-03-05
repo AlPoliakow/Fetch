@@ -134,6 +134,9 @@ section {
   margin: 0.5em;
   padding: 1em 0;
   width: 100%;
+  font-family: "Domine", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
 table {
