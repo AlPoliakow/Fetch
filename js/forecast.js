@@ -54,6 +54,22 @@ const displayForecast = function (forecastData) {
               <td>${index.uv}</td>`
             ;
     });
+
+    dailyForecastInfo.forEach((index, condition, temperature, wind, rain, cloud, uv) => {
+        console.log(index);
+        const activityRow = document.createElement(`tr`);
+        const activityTable = document.querySelector(`#activitiesPrediction`);
+        activityTable.appendChild(activityRow);
+            
+        activityRow.innerHTML=`
+              <td>${index.index}</td>
+              <td>Paddle function tbc</td>
+              <td>Hiking function tbc</td>
+              <td>Indoor function tbc</td>
+              <td>Beach function tbc</td>
+              <td>Star Gazing function tbc</td>`
+            ;
+    });
 };
     
 
