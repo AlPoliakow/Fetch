@@ -105,6 +105,7 @@ header {
 h1 {
   padding: 1em;
   margin: 0;
+  font-size: 1.75em;
   font-family: "Cinzel", serif;
   font-optical-sizing: auto;
   font-weight: 700;
