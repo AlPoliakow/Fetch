@@ -144,18 +144,25 @@ table {
   font-size: 0.8em;
 }
 
+table tr,
+table td{
+  outline: 1px black solid;
+  padding: 0.3em;
+  
+}
+
 article {
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
 }
 
-div {
+/*div {
   border: 2px solid purple;
   width: 100%;
   min-height: 50px;
   margin: 10px 1em;
-}
+}*/
 
 .star {
   border: none;
