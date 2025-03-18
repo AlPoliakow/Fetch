@@ -41,7 +41,7 @@ const displayForecast = function (forecastData) {
     dailyForecastInfo.forEach((index, condition, temperature, wind, rain, cloud, uv) => {
         console.log(index);
         const row = document.createElement(`tr`);
-        const table = document.querySelector(`table`);
+        const table = document.querySelector(`#forecastInfo table`);
         table.appendChild(row);
         row.innerHTML = `
               <td>${index.index}</td>
