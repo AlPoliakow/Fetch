@@ -85,7 +85,7 @@ textarea {
    ========================================================================== */
 body {
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   color: #000000;
   text-align: center;
   /*background-image: radial-gradient(closest-side at 10% 5%, yellow, rgb(38, 189, 244));*/
@@ -112,9 +112,17 @@ h1 {
   font-style: normal;
 }
 
+h2{
+  margin: 1em 0 0 0;
+}
+
 h3{
   width: 100%;
   margin: 1em 0 0.5em 0;
+}
+
+p{
+  margin: 0.25em 0.75em;
 }
 
 main {
