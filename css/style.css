@@ -112,6 +112,11 @@ h1 {
   font-style: normal;
 }
 
+h3{
+  width: 100%;
+  margin: 1em 0 0.5em 0;
+}
+
 main {
   box-sizing: border-box;
   width: 100vw;
