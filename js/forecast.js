@@ -62,15 +62,39 @@ const displayForecast = function (forecastData) {
             const activityTable = document.querySelector(`#activitiesPrediction`);
             activityTable.appendChild(activityRow);
             if (index.wind <= 20) {
-                console.log(`It's safe to paddle board`);
-            }
-            activityRow.innerHTML = `
+                if (index.rain >= 1) {
+                console.log(`It's raining`);
+                activityRow.innerHTML = `
+                <tr>
               <td>${index.index}</td>
-              <td>Paddle function tbc</td>
-              <td>Hiking function tbc</td>
-              <td>Indoor function tbc</td>
-              <td>Beach function tbc</td>`
-                ;
+              <td>Rain</td>
+              <td>Rain</td>
+              <td>Rain</td>
+              <td>Rain</td>
+              </tr>`
+            } else if (index.rain == 0) {
+                if(index.temperature >= 26) {
+                    console.log(`It's not raining and it's hot`);
+                    activityRow.innerHTML = `
+                    <tr>
+                  <td>${index.index}</td>
+                  <td>Perfect</td>
+                  <td>Possible</td>
+                  <td>Perfect</td>
+                  <td>Perfect</td>
+                  <tr>`
+                } else {
+                    activityRow.innerHTML = `
+                    <tr>
+                  <td>${index.index}</td>
+                  <td>Perfect</td>
+                  <td>Possible</td>
+                  <td>Possible</td>
+                  <td>Possible</td>
+                  <tr>`
+                }
+            }
+        }
     });
 };
 
@@ -160,24 +184,24 @@ const rainToday = function (forecastData) {
 
 
 //check wind and notify if paddle boarding is safe
-const checkBoardWind = function (forecastData) {
-    boardForecastToday = forecastData.forecast.forecastday[0];
-    console.log(boardForecastToday);
-    console.log(boardForecastToday.hour);
+//const checkBoardWind = function (forecastData) {
+   // boardForecastToday = forecastData.forecast.forecastday[0];
+    //console.log(boardForecastToday);
+    //console.log(boardForecastToday.hour);
     //create an array and check each hour for wind
-    const hourArray = boardForecastToday.hour;
-    const hourMap = hourArray.map((hour) => hour.wind_kph);
-    console.log(hourMap);
-    console.log(hourMap[6]);
-    const paddleMessage = document.querySelector(".paddle");
-    if (hourMap[6] <= 20) {
-        console.log("Paddle Board");
-        paddleMessage.innerText = "It's was paddle boarding weather at 6am!";
-    } else {
-        console.log("Too Windy");
-        paddleMessage.innerText = "It was too windy to paddle board at 6am!";
-    }
-};
+    //const hourArray = boardForecastToday.hour;
+    //const hourMap = hourArray.map((hour) => hour.wind_kph);
+   // console.log(hourMap);
+   // console.log(hourMap[6]);
+   // const paddleMessage = document.querySelector(".paddle");
+  //  if (hourMap[6] <= 20) {
+     //   console.log("Paddle Board");
+       // paddleMessage.innerText = "It's was paddle boarding weather at 6am!";
+  //  } else {
+       // console.log("Too Windy");
+       // paddleMessage.innerText = "It was too windy to paddle board at 6am!";
+   // }
+//};
 
 
 
