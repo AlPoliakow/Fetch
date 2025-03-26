@@ -177,6 +177,7 @@ article {
 
 #weatherInfo {
   margin-bottom: 20px;
+  width:100%;
 }
 
 /*div {
@@ -189,6 +190,10 @@ article {
 .star {
   border: none;
   margin: 0;
+}
+
+.star h4 {
+  margin:0 0 10px 0;
 }
 
 footer{

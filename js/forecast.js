@@ -11,7 +11,7 @@ const getForecast = async function () {
     //console.log(forecastData.forecast.forecastday[1]);// gives tomorrow's forecast
     displayForecast(forecastData);
     sunriseTomorrow(forecastData);
-    cloudTonight(forecastData);
+
     rainToday(forecastData);
     //checkBoardWind(forecastData);
 };
@@ -135,7 +135,7 @@ const displayForecast = function (forecastData) {
 
                 //switch statment to check wind
                 console.log(index.wind); // to check what numbers need to be included
-                switch (true) { // based on the chance of rain 
+                switch (true) { // based on the chance of wind
                     case (10 >= index.wind):
                         console.log("Not windy");
                         activityRow.innerHTML = `
@@ -207,7 +207,7 @@ const displayForecast = function (forecastData) {
 
                 //switch statment to check wind
                 console.log(index.wind); // to check what numbers need to be included
-                switch (true) { // based on the chance of rain 
+                switch (true) { // based on the chance of wind 
                     case (10 >= index.wind):
                         console.log("Not windy");
                         activityRow.innerHTML = `
@@ -279,7 +279,7 @@ const displayForecast = function (forecastData) {
 
                 //switch statment to check wind
                 console.log(index.wind); // to check what numbers need to be included
-                switch (true) { // based on the chance of rain 
+                switch (true) { // based on the chance of wind
                     case (10 >= index.wind):
                         console.log("Not windy");
                         activityRow.innerHTML = `
@@ -340,6 +340,131 @@ const displayForecast = function (forecastData) {
                 break;
         };
     });
+
+    //get tonights cloud cover for star gaxing and display information
+    const cloudTonight = function (forecastData) {
+        //isolate data
+        const starTable = document.createElement('table');
+        const star = document.querySelector(".star");
+        star.appendChild(starTable);
+        starTable.classList.add("starTable");
+        // create array for 9-11pm
+        const starTableHeading = document.createElement('tr');
+        starTable.appendChild(starTableHeading);
+        starTableHeading.innerHTML = `
+    <th>Time</th>
+    <th>Cloud</th>
+    <th>Rain</th>
+    <th>Prediction</th>
+    `
+        const starForecastArray = dailyForecastInfo.slice(21);
+        console.log(starForecastArray);
+
+        // display activity data in a table based on time 
+        starForecastArray.forEach((index) => {
+            console.log(index);
+            const starRow = document.createElement(`tr`);
+            starTable.appendChild(starRow);
+
+            // switch statement to check rain
+            console.log(index.rain); // to check what numbers need to be included
+            switch (true) { // based on the chance of rain 
+                case (0 == index.rain):
+                    console.log("Not raining tonight");
+
+                    //switch statment to check cloud
+                    console.log(index.cloud); // to check what numbers need to be included
+                    switch (true) { // based on the chance of cloud 
+                        case (40 >= index.cloud):
+                            console.log("Not windy");
+                            starRow.innerHTML = `
+                            <td>${index.index.substr(10)}</td> 
+                            <td>${index.cloud}%</td>
+                            <td>${index.rain}mm</td>
+                            <td>Perfect</td>`
+                                ; //subtr(10) removes the date and leaves the time
+                            break;
+                        case (40 <= index.cloud):
+                            console.log("Not windy");
+                            starRow.innerHTML = `
+                            <td>${index.index.substr(10)}</td> 
+                            <td>${index.cloud}%</td>
+                            <td>${index.rain}mm</td>
+                            <td>Too cloudy</td>`
+                                ; //subtr(10) removes the date and leaves the time
+                            break;
+                    };
+                    break;
+
+                //case: min rain
+                case (0.5 >= index.rain):
+                    console.log("Might raining tonight");
+
+                    //switch statment to check cloud
+                    console.log(index.cloud); // to check what numbers need to be included
+                    switch (true) { // based on the chance of cloud
+                        case (40 >= index.cloud):
+                            console.log("Not windy");
+                            starRow.innerHTML = `
+                            <td>${index.index.substr(10)}</td> 
+                            <td>${index.cloud}%</td>
+                            <td>${index.rain}mm</td>
+                            <td>Might drizzle</td>`
+                                ; //subtr(10) removes the date and leaves the time
+                            break;
+                        case (40 <= index.cloud):
+                            console.log("Not windy");
+                            starRow.innerHTML = `
+                            <td>${index.index.substr(10)}</td> 
+                            <td>${index.cloud}%</td>
+                            <td>${index.rain}mm</td>
+                            <td>Too cloudy</td>`
+                                ; //subtr(10) removes the date and leaves the time
+                            break;
+                    };
+                    break;
+
+                //case: mod rain
+                case (0.5 <= index.rain && 1 >= index.rain):
+                    //switch statment to check cloud
+                    console.log(index.cloud); // to check what numbers need to be included
+                    switch (true) { // based on the chance of cloud
+                        case (40 >= index.cloud):
+                            starRow.innerHTML = `
+                            <td>${index.index.substr(10)}</td> 
+                            <td>${index.cloud}%</td>
+                            <td>${index.rain}mm</td>
+                            <td>Showers</td>`
+                                ; //subtr(10) removes the date and leaves the time
+                            break;
+                        case (40 <= index.cloud):
+                            starRow.innerHTML = `
+                            <td>${index.index.substr(10)}</td> 
+                            <td>${index.cloud}%</td>
+                            <td>${index.rain}mm</td>
+                            <td>Too cloudy</td>`
+                                ; //subtr(10) removes the date and leaves the time
+                            break;
+                    };
+                    break;
+
+                //case: rain
+                case (1 >= index.rain):
+                    //switch statment to check cloud
+                    console.log(index.cloud); // to check what numbers need to be included
+                    starRow.innerHTML = `
+                            <td>${index.index.substr(10)}</td> 
+                            <td>${index.cloud}%</td>
+                            <td>${index.rain}mm</td>
+                            <td>Showers/rain</td>`
+                        ; //subtr(10) removes the date and leaves the time
+                    break;
+            };
+
+        });
+    };
+
+    cloudTonight(forecastData);
 };
 
 
@@ -367,83 +492,3 @@ const sunriseTomorrow = function (forecastData) {
     sunriseMessage.innerText = `Sunrise is at ${sunriseTomorrow} tomorrow and it will be ${sunriseCloud}-${sunriseWindowCloud}% cloudy`;
 };
 
-
-
-//get tonights cloud cover for star gaxing and display information
-const cloudTonight = function (forecastData) {
-    //isolate data
-    const forecastToday = forecastData.forecast.forecastday[0];
-    console.log(forecastToday);
-    const earlyStar = forecastToday.hour[21];
-    console.log(earlyStar);
-    const midStar = forecastToday.hour[22];
-    console.log(midStar);
-    const lateStar = forecastToday.hour[23];
-    console.log(lateStar);
-    const earlyStarCloud = earlyStar.cloud;
-    const midStarCloud = midStar.cloud;
-    const lateStarCloud = lateStar.cloud;
-    const starArray = [earlyStarCloud, midStarCloud, lateStarCloud];
-    console.log(starArray);
-
-    //create cloud percent message
-    const cloudMessage = document.createElement("p");
-    starGazeMessage.appendChild(cloudMessage);
-
-    cloudMessage.innerText = `There is predicted to be ${earlyStarCloud}% cloud cover at 9pm, ${midStarCloud}% at 10pm and ${lateStarCloud}% at 11pm`;
-
-    // loop
-    for (let starCloud in starArray) {
-        if (starCloud <= 10) {
-            console.log("It's predicted to be perfect for stargazing tonight");
-        } else if (starCloud >= 10 && starCloud <= 40) {
-            console.log("It's predicted to be alright for stargazing tonight");
-        } else {
-            console.log("It's predicted to be challenging to stargaze tonight");
-        }
-    }
-    //if (earlyNumber <= 10) {
-    //nineMessage.innerHTML = "<span>9pm:</span> It should be perfect for stargazing";
-    // } else if (earlyNumber >= 10 && earlyNumber <= 30) {
-    //nineMessage.innerHTML = "<span>9pm:</span> It might be alright to stargaze"
-    //  } else {
-    //nineMessage.innerHTML = "<span>9pm:</span> Not ideal conditions for stargazing"
-    // }
-};
-
-//check rain and display information
-const rainToday = function (forecastData) {
-    //isolate data
-    const rainForecastToday = forecastData.forecast.forecastday[0];
-    console.log(rainForecastToday);
-    const rainArray = rainForecastToday.hour;
-    const rainMap = rainArray.map((hour) => hour.chance_of_rain);
-    console.log(rainMap);
-    console.log(rainMap[21], rainMap[22], rainMap[23]);
-    //create star rain message
-    const starRainMessage = document.createElement("p");
-    starGazeMessage.appendChild(starRainMessage);
-    starRainMessage.innerText = `There is a ${rainMap[21]}% chance of rain at 9pm, a ${rainMap[22]}% chance of rain at 10pm and a ${rainMap[23]}% chance of rain at 11pm`
-
-};
-
-
-//check wind and notify if paddle boarding is safe
-//const checkBoardWind = function (forecastData) {
-// boardForecastToday = forecastData.forecast.forecastday[0];
-//console.log(boardForecastToday);
-//console.log(boardForecastToday.hour);
-//create an array and check each hour for wind
-//const hourArray = boardForecastToday.hour;
-//const hourMap = hourArray.map((hour) => hour.wind_kph);
-// console.log(hourMap);
-// console.log(hourMap[6]);
-// const paddleMessage = document.querySelector(".paddle");
-//  if (hourMap[6] <= 20) {
-//   console.log("Paddle Board");
-// paddleMessage.innerText = "It's was paddle boarding weather at 6am!";
-//  } else {
-// console.log("Too Windy");
-// paddleMessage.innerText = "It was too windy to paddle board at 6am!";
-// }
-//};
