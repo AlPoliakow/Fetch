@@ -134,7 +134,7 @@ main {
 }
 
 section {
-  width: 100vw;
+  width: 100%;
   box-sizing: border-box;
 }
 
@@ -146,7 +146,7 @@ section {
   justify-content: center;
   flex-flow: row wrap;
   margin: 0.5em;
-  padding: 1em 0;
+  padding: 1em 5px;
   width: 100%;
   font-family: "Domine", serif;
   font-optical-sizing: auto;
@@ -161,7 +161,7 @@ table {
 table tr,
 table td {
   outline: 1px black solid;
-  padding: 0.3em;
+  padding: 0.5em;
   
 }
 
