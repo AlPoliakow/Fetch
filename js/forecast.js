@@ -44,14 +44,14 @@ const displayForecast = function (forecastData) {
         const table = document.querySelector(`#forecastInfo table`);
         table.appendChild(row);
         row.innerHTML = `
-              <td>${index.index}</td>
+              <td>${index.index.substr(10)}</td> 
               <td>${index.condition}</td>
               <td>${index.temperature}</td>
               <td>${index.wind}</td>
               <td>${index.rain}</td>
               <td>${index.cloud}</td>
               <td>${index.uv}</td>`
-            ;
+            ; //subtr(10) removes the date and leaves the time
     });
 
     // display activity data in a table based on time 
@@ -76,7 +76,7 @@ const displayForecast = function (forecastData) {
                         console.log("Not windy");
                         activityRow.innerHTML = `
                         <tr>
-                        <td>${index.index}</td>
+                        <td>${index.index.substr(10)}</td>
                         <td>Perfect</td>
                         <td>Go for it</td>
                         <td>Go for it</td>
@@ -87,7 +87,7 @@ const displayForecast = function (forecastData) {
                         console.log("Not too windy");
                         activityRow.innerHTML = `
                         <tr>
-                        <td>${index.index}</td>
+                        <td>${index.index.substr(10)}</td>
                         <td>Go for it</td>
                         <td>Go for it</td>
                         <td>Go for it</td>
@@ -98,7 +98,7 @@ const displayForecast = function (forecastData) {
                         console.log("Kind of windy");
                         activityRow.innerHTML = `
                         <tr>
-                        <td>${index.index}</td>
+                        <td>${index.index.substr(10)}</td>
                         <td>Unsafe</td>
                         <td>Ok</td>
                         <td>Ok</td>
@@ -109,7 +109,7 @@ const displayForecast = function (forecastData) {
                         console.log("Quite windy");
                         activityRow.innerHTML = `
                         <tr>
-                        <td>${index.index}</td>
+                        <td>${index.index.substr(10)}</td>
                         <td>Unsafe</td>
                         <td>Risky</td>
                         <td>Nah</td>
@@ -120,7 +120,7 @@ const displayForecast = function (forecastData) {
                         console.log("Too windy");
                         activityRow.innerHTML = `
                         <tr>
-                        <td>${index.index}</td>
+                        <td>${index.index.substr(10)}</td>
                         <td>Unsafe</td>
                         <td>Unsafe</td>
                         <td>Unsafe</td>
@@ -140,7 +140,7 @@ const displayForecast = function (forecastData) {
                         console.log("Not windy");
                         activityRow.innerHTML = `
                         <tr>
-                        <td>${index.index}</td>
+                        <td>${index.index.substr(10)}</td>
                         <td>Ok</td>
                         <td>Ok</td>
                         <td>Ok</td>
@@ -151,7 +151,7 @@ const displayForecast = function (forecastData) {
                         console.log("Not too windy");
                         activityRow.innerHTML = `
                         <tr>
-                        <td>${index.index}</td>
+                        <td>${index.index.substr(10)}</td>
                         <td>Ok</td>
                         <td>Ok</td>
                         <td>Ok</td>
@@ -162,7 +162,7 @@ const displayForecast = function (forecastData) {
                         console.log("Kind of windy");
                         activityRow.innerHTML = `
                         <tr>
-                        <td>${index.index}</td>
+                        <td>${index.index.substr(10)}</td>
                         <td>Unsafe</td>
                         <td>Ok</td>
                         <td>Ok</td>
@@ -173,7 +173,7 @@ const displayForecast = function (forecastData) {
                         console.log("Quite windy");
                         activityRow.innerHTML = `
                         <tr>
-                        <td>${index.index}</td>
+                        <td>${index.index.substr(10)}</td>
                         <td>Unsafe</td>
                         <td>Risky</td>
                         <td>Nah</td>
@@ -184,7 +184,7 @@ const displayForecast = function (forecastData) {
                         console.log("Too windy");
                         activityRow.innerHTML = `
                         <tr>
-                        <td>${index.index}</td>
+                        <td>${index.index.substr(10)}</td>
                         <td>Unsafe</td>
                         <td>Unsafe</td>
                         <td>Unsafe</td>
@@ -198,7 +198,7 @@ const displayForecast = function (forecastData) {
                 console.log("Mid rain");
                 activityRow.innerHTML = `
                         <tr>
-                        <td>${index.index}</td>
+                        <td>${index.index.substr(10)}</td>
                         <td>Mid risk</td>
                         <td>Mid risk</td>
                         <td>Mid riskM</td>
@@ -212,7 +212,7 @@ const displayForecast = function (forecastData) {
                         console.log("Not windy");
                         activityRow.innerHTML = `
                         <tr>
-                        <td>${index.index}</td>
+                        <td>${index.index.substr(10)}</td>
                         <td>Potential</td>
                         <td>Potential</td>
                         <td>Potential</td>
@@ -223,7 +223,7 @@ const displayForecast = function (forecastData) {
                         console.log("Not too windy");
                         activityRow.innerHTML = `
                         <tr>
-                        <td>${index.index}</td>
+                        <td>${index.index.substr(10)}</td>
                         <td>Potential</td>
                         <td>Potential</td>
                         <td>Potential</td>
@@ -234,7 +234,7 @@ const displayForecast = function (forecastData) {
                         console.log("Kind of windy");
                         activityRow.innerHTML = `
                         <tr>
-                        <td>${index.index}</td>
+                        <td>${index.index.substr(10)}</td>
                         <td>Unsafe</td>
                         <td>Potential</td>
                         <td>Potential</td>
@@ -245,7 +245,7 @@ const displayForecast = function (forecastData) {
                         console.log("Quite windy");
                         activityRow.innerHTML = `
                         <tr>
-                        <td>${index.index}</td>
+                        <td>${index.index.substr(10)}</td>
                         <td>Unsafe</td>
                         <td>Risky</td>
                         <td>Nah</td>
@@ -256,7 +256,7 @@ const displayForecast = function (forecastData) {
                         console.log("Too windy");
                         activityRow.innerHTML = `
                         <tr>
-                        <td>${index.index}</td>
+                        <td>${index.index.substr(10)}</td>
                         <td>Unsafe</td>
                         <td>Unsafe</td>
                         <td>Unsafe</td>
@@ -270,7 +270,7 @@ const displayForecast = function (forecastData) {
                 console.log("Rain");
                 activityRow.innerHTML = `
                     <tr>
-                    <td>${index.index}</td>
+                    <td>${index.index.substr(10)}</td>
                     <td>Risky</td>
                     <td>Risky</td>
                     <td>Risky</td>
@@ -284,7 +284,7 @@ const displayForecast = function (forecastData) {
                         console.log("Not windy");
                         activityRow.innerHTML = `
                         <tr>
-                        <td>${index.index}</td>
+                        <td>${index.index.substr(10)}</td>
                         <td>Risky</td>
                         <td>Risky</td>
                         <td>Risky</td>
@@ -295,7 +295,7 @@ const displayForecast = function (forecastData) {
                         console.log("Not too windy");
                         activityRow.innerHTML = `
                         <tr>
-                        <td>${index.index}</td>
+                        <td>${index.index.substr(10)}</td>
                         <td>Risky</td>
                         <td>Risky</td>
                         <td>Risky</td>
@@ -306,7 +306,7 @@ const displayForecast = function (forecastData) {
                         console.log("Kind of windy");
                         activityRow.innerHTML = `
                         <tr>
-                        <td>${index.index}</td>
+                        <td>${index.index.substr(10)}</td>
                         <td>Unsafe</td>
                         <td>Risky</td>
                         <td>Risky</td>
@@ -317,7 +317,7 @@ const displayForecast = function (forecastData) {
                         console.log("Quite windy");
                         activityRow.innerHTML = `
                         <tr>
-                        <td>${index.index}</td>
+                        <td>${index.index.substr(10)}</td>
                         <td>Unsafe</td>
                         <td>Risky</td>
                         <td>Risky</td>
@@ -328,7 +328,7 @@ const displayForecast = function (forecastData) {
                         console.log("Too windy");
                         activityRow.innerHTML = `
                         <tr>
-                        <td>${index.index}</td>
+                        <td>${index.index.substr(10)}</td>
                         <td>Unsafe</td>
                         <td>Unsafe</td>
                         <td>Unsafe</td>
