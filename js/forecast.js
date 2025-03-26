@@ -13,7 +13,7 @@ const getForecast = async function () {
     sunriseTomorrow(forecastData);
     cloudTonight(forecastData);
     rainToday(forecastData);
-    checkBoardWind(forecastData);
+    //checkBoardWind(forecastData);
 };
 
 getForecast();
@@ -31,13 +31,13 @@ const displayForecast = function (forecastData) {
         condition: hour.condition.text,
         temperature: hour.temp_c,
         wind: hour.wind_kph,
-        rain: hour.chance_of_rain,
+        rain: hour.precip_mm,
         cloud: hour.cloud,
         uv: hour.uv
     }));
 
     console.log(dailyForecastInfo);
-    
+
     dailyForecastInfo.forEach((index, condition, temperature, wind, rain, cloud, uv) => {
         console.log(index);
         const row = document.createElement(`tr`);
@@ -58,45 +58,50 @@ const displayForecast = function (forecastData) {
     const filteredDailyForecastArray = dailyForecastInfo.slice(6, 21);
     //console.log(filteredDailyForecastArray);
     filteredDailyForecastArray.forEach((index, condition, temperature, wind, rain, cloud, uv) => {
-                const activityRow = document.createElement(`tr`);
-            const activityTable = document.querySelector(`#activitiesPrediction`);
-            activityTable.appendChild(activityRow);
-            if (index.wind <= 20) {
-                if (index.rain >= 1) {
-                console.log(`It's raining`);
-                activityRow.innerHTML = `
-                <tr>
-              <td>${index.index}</td>
-              <td>Rain</td>
-              <td>Rain</td>
-              <td>Rain</td>
-              <td>Rain</td>
-              </tr>`
-            } else if (index.rain == 0) {
-                if(index.temperature >= 26) {
-                    console.log(`It's not raining and it's hot`);
-                    activityRow.innerHTML = `
-                    <tr>
-                  <td>${index.index}</td>
-                  <td>Perfect</td>
-                  <td>Possible</td>
-                  <td>Perfect</td>
-                  <td>Perfect</td>
-                  <tr>`
-                } else {
-                    activityRow.innerHTML = `
-                    <tr>
-                  <td>${index.index}</td>
-                  <td>Perfect</td>
-                  <td>Possible</td>
-                  <td>Possible</td>
-                  <td>Possible</td>
-                  <tr>`
-                }
-            }
-        }
+        const activityRow = document.createElement(`tr`);
+        const activityTable = document.querySelector(`#activitiesPrediction`);
+        activityTable.appendChild(activityRow);
+        console.log("Registering activities function"); //registered
+        console.log(index.rain); // to check what numbers need to be included
+        switch (true) { // based on the chance of rain 
+            case (0 == index.rain):
+            case (1 >= index.rain): 
+            case (1 <= index.rain):
+                console.log("registering"); //registered
+                //activityRow.innerHTML = `
+                // <tr>
+                //<td>${index.index}</td>
+                //</tr>`
+                break;
+           // case '1':
+                //console.log("Light rain");
+                //activityRow.innerHTML = `
+               // <tr>
+               // <td>${index.index}</td>
+               // </tr>`
+               // break;
+            //case '2':
+                //console.log("Light to moderate rain");
+               // activityRow.innerHTML = `
+              //  <tr>
+              //  <td>${index.index}</td>
+              //  </tr>`
+              //  break;
+           // case '3':
+               // console.log("Rain");
+               // activityRow.innerHTML = `
+               // <tr>
+               // <td>${index.index}</td>
+              //  <td>Rain</td>
+               // <td>Rain</td>
+               // <td>Rain</td>
+               // <td>Rain</td>
+               // </tr>`
+               // break;
+        };
     });
 };
+
 
 
 //get tomorrow's sunrise time and display information
@@ -185,27 +190,20 @@ const rainToday = function (forecastData) {
 
 //check wind and notify if paddle boarding is safe
 //const checkBoardWind = function (forecastData) {
-   // boardForecastToday = forecastData.forecast.forecastday[0];
-    //console.log(boardForecastToday);
-    //console.log(boardForecastToday.hour);
-    //create an array and check each hour for wind
-    //const hourArray = boardForecastToday.hour;
-    //const hourMap = hourArray.map((hour) => hour.wind_kph);
-   // console.log(hourMap);
-   // console.log(hourMap[6]);
-   // const paddleMessage = document.querySelector(".paddle");
-  //  if (hourMap[6] <= 20) {
-     //   console.log("Paddle Board");
-       // paddleMessage.innerText = "It's was paddle boarding weather at 6am!";
-  //  } else {
-       // console.log("Too Windy");
-       // paddleMessage.innerText = "It was too windy to paddle board at 6am!";
-   // }
+// boardForecastToday = forecastData.forecast.forecastday[0];
+//console.log(boardForecastToday);
+//console.log(boardForecastToday.hour);
+//create an array and check each hour for wind
+//const hourArray = boardForecastToday.hour;
+//const hourMap = hourArray.map((hour) => hour.wind_kph);
+// console.log(hourMap);
+// console.log(hourMap[6]);
+// const paddleMessage = document.querySelector(".paddle");
+//  if (hourMap[6] <= 20) {
+//   console.log("Paddle Board");
+// paddleMessage.innerText = "It's was paddle boarding weather at 6am!";
+//  } else {
+// console.log("Too Windy");
+// paddleMessage.innerText = "It was too windy to paddle board at 6am!";
+// }
 //};
-
-
-
-
-
-
-
