@@ -489,6 +489,12 @@ const sunriseTomorrow = function (forecastData) {
     console.log(sunriseWindowCloud);
     //display information
     const sunriseMessage = document.querySelector(".sunrise");
+
+    // if/else statement to list lowest value first
+    if (sunriseCloud <= sunriseWindowCloud) {
     sunriseMessage.innerText = `Sunrise is at ${sunriseTomorrow} tomorrow and it will be ${sunriseCloud}-${sunriseWindowCloud}% cloudy`;
+    } else {
+        sunriseMessage.innerText = `Sunrise is at ${sunriseTomorrow} tomorrow and it will be ${sunriseWindowCloud}-${sunriseCloud}% cloudy`;
+    }
 };
 
