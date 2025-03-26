@@ -65,39 +65,50 @@ const displayForecast = function (forecastData) {
         console.log(index.rain); // to check what numbers need to be included
         switch (true) { // based on the chance of rain 
             case (0 == index.rain):
-            case (1 >= index.rain): 
-            case (1 <= index.rain):
-                console.log("registering"); //registered
-                //activityRow.innerHTML = `
-                // <tr>
-                //<td>${index.index}</td>
-                //</tr>`
+                console.log("Not raining");
+                activityRow.innerHTML = `
+                    <tr>
+                    <td>${index.index}</td>
+                    <td>Go for it</td>
+                    <td>Go for it</td>
+                    <td>Go for it</td>
+                    <td>Go for it</td>
+                    </tr>`
                 break;
-           // case '1':
-                //console.log("Light rain");
-                //activityRow.innerHTML = `
-               // <tr>
-               // <td>${index.index}</td>
-               // </tr>`
-               // break;
-            //case '2':
-                //console.log("Light to moderate rain");
-               // activityRow.innerHTML = `
-              //  <tr>
-              //  <td>${index.index}</td>
-              //  </tr>`
-              //  break;
-           // case '3':
-               // console.log("Rain");
-               // activityRow.innerHTML = `
-               // <tr>
-               // <td>${index.index}</td>
-              //  <td>Rain</td>
-               // <td>Rain</td>
-               // <td>Rain</td>
-               // <td>Rain</td>
-               // </tr>`
-               // break;
+            case (0.25 >= index.rain):
+                console.log("Light rain");
+                activityRow.innerHTML = `
+                    <tr>
+                    <td>${index.index}</td>
+                    <td>Min risk</td>
+                    <td>Min risk</td>
+                    <td>Min risk</td>
+                    <td>Min risk</td>
+                    </tr>`
+                break;
+                case (0.25 <= index.rain && 1 >= index.rain):
+                    console.log("Mid rain");
+                    activityRow.innerHTML = `
+                        <tr>
+                        <td>${index.index}</td>
+                        <td>Mid risk</td>
+                        <td>Mid risk</td>
+                        <td>Mid riskM</td>
+                        <td>Mid risk</td>
+                        </tr>`
+                    break;
+            case (1 <= index.rain):
+                console.log("Rain");
+                activityRow.innerHTML = `
+                    <tr>
+                    <td>${index.index}</td>
+                    <td>Risky</td>
+                    <td>Risky</td>
+                    <td>Risky</td>
+                    <td>Risky</td>
+                    </tr>`
+                    // output risky to highlight not recommended
+                break;
         };
     });
 };
