@@ -136,11 +136,6 @@ main {
 section {
   width: 100%;
   box-sizing: border-box;
-}
-
-.weather,
-.activities {
-  border: rgb(0, 0, 0) 2px solid;
   background: #FFFFFF;
   display: flex;
   justify-content: center;
@@ -152,6 +147,7 @@ section {
   font-optical-sizing: auto;
   font-style: normal;
 }
+
 
 table {
   font-size: 0.8em;
@@ -190,10 +186,6 @@ article {
 .star {
   border: none;
   margin: 0;
-}
-
-.star h4 {
-  margin:0 0 10px 0;
 }
 
 footer{
