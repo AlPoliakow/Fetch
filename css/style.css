@@ -159,7 +159,7 @@ table td {
   outline: 1px black solid;
   padding: 0.5em;
   
-}
+} 
 
 .today {
   margin-top:0;
@@ -275,8 +275,40 @@ footer{
    Modify as content requires.
    ========================================================================== */
 
-@media only screen and (min-width: 35em) {
-  /* Style adjustments for viewports that meet the condition */
+@media only screen and (min-width: 768px) {
+  /* Style adjustments for viewports that meet the condition (tablets +) */
+
+  section {
+    width: 75%;
+  }
+
+  #activitiesPrediction{
+    width: 90%;
+  }
+
+  #activitiesInfo{
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  #activitiesInfo h3{
+    margin: 20px 0;
+  }
+
+  .starContainer,
+  .sunriseContainer {
+    max-width: 50%;
+  }
+
+  .sunriseContainer {
+    display: block;
+  }
+
+  .sunrise {
+    margin: 0;
+  }
+
 }
 
 @media print,
