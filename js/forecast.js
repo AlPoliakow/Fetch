@@ -62,33 +62,141 @@ const displayForecast = function (forecastData) {
         const activityTable = document.querySelector(`#activitiesPrediction`);
         activityTable.appendChild(activityRow);
         console.log("Registering activities function"); //registered
+
+        //switch statement to check raing
         console.log(index.rain); // to check what numbers need to be included
         switch (true) { // based on the chance of rain 
             case (0 == index.rain):
                 console.log("Not raining");
-                activityRow.innerHTML = `
-                    <tr>
-                    <td>${index.index}</td>
-                    <td>Go for it</td>
-                    <td>Go for it</td>
-                    <td>Go for it</td>
-                    <td>Go for it</td>
-                    </tr>`
+
+                //switch statment to check wind
+                console.log(index.wind); // to check what numbers need to be included
+                switch (true) { // based on the chance of rain 
+                    case (10 >= index.wind):
+                        console.log("Not windy");
+                        activityRow.innerHTML = `
+                        <tr>
+                        <td>${index.index}</td>
+                        <td>Perfect</td>
+                        <td>Go for it</td>
+                        <td>Go for it</td>
+                        <td>Perfect</td>
+                        </tr>`
+                        break;
+                    case (10 <= index.wind && 20 >= index.wind):
+                        console.log("Not too windy");
+                        activityRow.innerHTML = `
+                        <tr>
+                        <td>${index.index}</td>
+                        <td>Go for it</td>
+                        <td>Go for it</td>
+                        <td>Go for it</td>
+                        <td>Go for it</td>
+                        </tr>`
+                        break;
+                    case (20 <= index.wind && 30 >= index.wind):
+                        console.log("Kind of windy");
+                        activityRow.innerHTML = `
+                        <tr>
+                        <td>${index.index}</td>
+                        <td>Unsafe</td>
+                        <td>Ok</td>
+                        <td>Ok</td>
+                        <td>Ok</td>
+                        </tr>`
+                        break;
+                    case (30 <= index.wind && 40 >= index.wind):
+                        console.log("Quite windy");
+                        activityRow.innerHTML = `
+                        <tr>
+                        <td>${index.index}</td>
+                        <td>Unsafe</td>
+                        <td>Risky</td>
+                        <td>Nah</td>
+                        <td>Risky</td>
+                        </tr>`
+                        break;
+                    case (40 <= index.wind):
+                        console.log("Too windy");
+                        activityRow.innerHTML = `
+                        <tr>
+                        <td>${index.index}</td>
+                        <td>Unsafe</td>
+                        <td>Unsafe</td>
+                        <td>Unsafe</td>
+                        <td>Unsafe</td>
+                        </tr>`
+                        break;
+                };
+
                 break;
             case (0.25 >= index.rain):
                 console.log("Light rain");
-                activityRow.innerHTML = `
-                    <tr>
-                    <td>${index.index}</td>
-                    <td>Min risk</td>
-                    <td>Min risk</td>
-                    <td>Min risk</td>
-                    <td>Min risk</td>
-                    </tr>`
+
+                //switch statment to check wind
+                console.log(index.wind); // to check what numbers need to be included
+                switch (true) { // based on the chance of rain 
+                    case (10 >= index.wind):
+                        console.log("Not windy");
+                        activityRow.innerHTML = `
+                        <tr>
+                        <td>${index.index}</td>
+                        <td>Ok</td>
+                        <td>Ok</td>
+                        <td>Ok</td>
+                        <td>Ok</td>
+                        </tr>`
+                        break;
+                    case (10 <= index.wind && 20 >= index.wind):
+                        console.log("Not too windy");
+                        activityRow.innerHTML = `
+                        <tr>
+                        <td>${index.index}</td>
+                        <td>Ok</td>
+                        <td>Ok</td>
+                        <td>Ok</td>
+                        <td>Ok</td>
+                        </tr>`
+                        break;
+                    case (20 <= index.wind && 30 >= index.wind):
+                        console.log("Kind of windy");
+                        activityRow.innerHTML = `
+                        <tr>
+                        <td>${index.index}</td>
+                        <td>Unsafe</td>
+                        <td>Ok</td>
+                        <td>Ok</td>
+                        <td>Ok</td>
+                        </tr>`
+                        break;
+                    case (30 <= index.wind && 40 >= index.wind):
+                        console.log("Quite windy");
+                        activityRow.innerHTML = `
+                        <tr>
+                        <td>${index.index}</td>
+                        <td>Unsafe</td>
+                        <td>Risky</td>
+                        <td>Nah</td>
+                        <td>Risky</td>
+                        </tr>`
+                        break;
+                    case (40 <= index.wind):
+                        console.log("Too windy");
+                        activityRow.innerHTML = `
+                        <tr>
+                        <td>${index.index}</td>
+                        <td>Unsafe</td>
+                        <td>Unsafe</td>
+                        <td>Unsafe</td>
+                        <td>Unsafe</td>
+                        </tr>`
+                        break;
+                };
+
                 break;
-                case (0.25 <= index.rain && 1 >= index.rain):
-                    console.log("Mid rain");
-                    activityRow.innerHTML = `
+            case (0.25 <= index.rain && 1 >= index.rain):
+                console.log("Mid rain");
+                activityRow.innerHTML = `
                         <tr>
                         <td>${index.index}</td>
                         <td>Mid risk</td>
@@ -96,7 +204,68 @@ const displayForecast = function (forecastData) {
                         <td>Mid riskM</td>
                         <td>Mid risk</td>
                         </tr>`
-                    break;
+
+                //switch statment to check wind
+                console.log(index.wind); // to check what numbers need to be included
+                switch (true) { // based on the chance of rain 
+                    case (10 >= index.wind):
+                        console.log("Not windy");
+                        activityRow.innerHTML = `
+                        <tr>
+                        <td>${index.index}</td>
+                        <td>Potential</td>
+                        <td>Potential</td>
+                        <td>Potential</td>
+                        <td>Potential</td>
+                        </tr>`
+                        break;
+                    case (10 <= index.wind && 20 >= index.wind):
+                        console.log("Not too windy");
+                        activityRow.innerHTML = `
+                        <tr>
+                        <td>${index.index}</td>
+                        <td>Potential</td>
+                        <td>Potential</td>
+                        <td>Potential</td>
+                        <td>Potential</td>
+                        </tr>`
+                        break;
+                    case (20 <= index.wind && 30 >= index.wind):
+                        console.log("Kind of windy");
+                        activityRow.innerHTML = `
+                        <tr>
+                        <td>${index.index}</td>
+                        <td>Unsafe</td>
+                        <td>Potential</td>
+                        <td>Potential</td>
+                        <td>Potential</td>
+                        </tr>`
+                        break;
+                    case (30 <= index.wind && 40 >= index.wind):
+                        console.log("Quite windy");
+                        activityRow.innerHTML = `
+                        <tr>
+                        <td>${index.index}</td>
+                        <td>Unsafe</td>
+                        <td>Risky</td>
+                        <td>Nah</td>
+                        <td>Risky</td>
+                        </tr>`
+                        break;
+                    case (40 <= index.wind):
+                        console.log("Too windy");
+                        activityRow.innerHTML = `
+                        <tr>
+                        <td>${index.index}</td>
+                        <td>Unsafe</td>
+                        <td>Unsafe</td>
+                        <td>Unsafe</td>
+                        <td>Unsafe</td>
+                        </tr>`
+                        break;
+                };
+
+                break;
             case (1 <= index.rain):
                 console.log("Rain");
                 activityRow.innerHTML = `
@@ -107,7 +276,67 @@ const displayForecast = function (forecastData) {
                     <td>Risky</td>
                     <td>Risky</td>
                     </tr>`
-                    // output risky to highlight not recommended
+
+                //switch statment to check wind
+                console.log(index.wind); // to check what numbers need to be included
+                switch (true) { // based on the chance of rain 
+                    case (10 >= index.wind):
+                        console.log("Not windy");
+                        activityRow.innerHTML = `
+                        <tr>
+                        <td>${index.index}</td>
+                        <td>Risky</td>
+                        <td>Risky</td>
+                        <td>Risky</td>
+                        <td>Risky</td>
+                        </tr>`
+                        break;
+                    case (10 <= index.wind && 20 >= index.wind):
+                        console.log("Not too windy");
+                        activityRow.innerHTML = `
+                        <tr>
+                        <td>${index.index}</td>
+                        <td>Risky</td>
+                        <td>Risky</td>
+                        <td>Risky</td>
+                        <td>Risky</td>
+                        </tr>`
+                        break;
+                    case (20 <= index.wind && 30 >= index.wind):
+                        console.log("Kind of windy");
+                        activityRow.innerHTML = `
+                        <tr>
+                        <td>${index.index}</td>
+                        <td>Unsafe</td>
+                        <td>Risky</td>
+                        <td>Risky</td>
+                        <td>Risky</td>
+                        </tr>`
+                        break;
+                    case (30 <= index.wind && 40 >= index.wind):
+                        console.log("Quite windy");
+                        activityRow.innerHTML = `
+                        <tr>
+                        <td>${index.index}</td>
+                        <td>Unsafe</td>
+                        <td>Risky</td>
+                        <td>Risky</td>
+                        <td>Unsafe</td>
+                        </tr>`
+                        break;
+                    case (40 <= index.wind):
+                        console.log("Too windy");
+                        activityRow.innerHTML = `
+                        <tr>
+                        <td>${index.index}</td>
+                        <td>Unsafe</td>
+                        <td>Unsafe</td>
+                        <td>Unsafe</td>
+                        <td>Unsafe</td>
+                        </tr>`
+                        break;
+                };
+
                 break;
         };
     });
