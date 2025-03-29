@@ -1,21 +1,25 @@
-// select section for stargazing message
+// select stargazing message div
 const starGazeMessage = document.querySelector(".star");
-// select section for forecast Info
+// select  forecastInfo div
 const forecastMessage = document.querySelector("#forecastInfo");
 
-//get forecast
+//get forecast data
 const getForecast = async function () {
     const request = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=935da16f3bf140a4872111650250201&q=Mallacoota&days=5&aqi=no&alerts=no`);
     const forecastData = await request.json();
     console.log(forecastData);
-    //console.log(forecastData.forecast.forecastday[1]);// gives tomorrow's forecast
+    //console.log(forecastData.forecast.forecastday[1]); // gives tomorrow's forecast
+    //call display daily forecast data
     displayForecast(forecastData);
+    //call display sunrise data
     sunriseTomorrow(forecastData);
-    //checkBoardWind(forecastData);
+   
 };
 
+// call forecast data function
 getForecast();
 
+//display daily forecast data
 const displayForecast = function (forecastData) {
     //isolate data
     const forecastToday = forecastData.forecast.forecastday[0];
@@ -23,7 +27,7 @@ const displayForecast = function (forecastData) {
     const dailyArray = forecastToday.hour;
     console.log(dailyArray);
 
-
+    // isolate time, condition description, temperature, wind, rain, cloud and uv from data for each hour
     const dailyForecastInfo = dailyArray.map(hour => ({
         index: hour.time,
         condition: hour.condition.text,
@@ -33,9 +37,9 @@ const displayForecast = function (forecastData) {
         cloud: hour.cloud,
         uv: hour.uv
     }));
+    //console.log(dailyForecastInfo);
 
-    console.log(dailyForecastInfo);
-
+    // create a table displaying the daily forecast data with a row for each hour
     dailyForecastInfo.forEach((index, condition, temperature, wind, rain, cloud, uv) => {
         console.log(index);
         const row = document.createElement(`tr`);
@@ -52,26 +56,28 @@ const displayForecast = function (forecastData) {
             ; //subtr(10) removes the date and leaves the time
     });
 
-    // display activity data in a table based on time 
+    // display activity data in a table with a row for each hour 
     const filteredDailyForecastArray = dailyForecastInfo.slice(6, 21);
     //console.log(filteredDailyForecastArray);
     filteredDailyForecastArray.forEach((index, condition, temperature, wind, rain, cloud, uv) => {
         const activityRow = document.createElement(`tr`);
         const activityTable = document.querySelector(`#activitiesPrediction`);
         activityTable.appendChild(activityRow);
-        console.log("Registering activities function"); //registered
+        //console.log("Registering activities function"); //registered
 
-        //switch statement to check raing
-        console.log(index.rain); // to check what numbers need to be included
+        //switch statement to check rain
+        //console.log(index.rain); // to check what numbers need to be included in the switch statement
         switch (true) { // based on the chance of rain 
-            case (0 == index.rain):
-                console.log("Not raining");
+            //case: no rain
+            case (0 == index.rain): 
+                //console.log("Not raining");
 
                 //switch statment to check wind
-                console.log(index.wind); // to check what numbers need to be included
-                switch (true) { // based on the chance of rain 
+                console.log(index.wind); // to check what numbers need to be included in the switch statement
+                switch (true) { // based on the chance of wind
+                    //case: wind is less than 10kmph
                     case (10 >= index.wind):
-                        console.log("Not windy");
+                        //console.log("Not windy");
                         activityRow.innerHTML = `
                         <tr>
                         <td>${index.index.substr(10)}</td>
@@ -81,8 +87,9 @@ const displayForecast = function (forecastData) {
                         <td>Perfect</td>
                         </tr>`
                         break;
+                    // case: wind is between 10 and 20kmph
                     case (10 <= index.wind && 20 >= index.wind):
-                        console.log("Not too windy");
+                        //console.log("Not too windy");
                         activityRow.innerHTML = `
                         <tr>
                         <td>${index.index.substr(10)}</td>
@@ -92,8 +99,9 @@ const displayForecast = function (forecastData) {
                         <td>Go for it</td>
                         </tr>`
                         break;
+                    // case: wind is between 20 and 30kmph
                     case (20 <= index.wind && 30 >= index.wind):
-                        console.log("Kind of windy");
+                        //console.log("Kind of windy");
                         activityRow.innerHTML = `
                         <tr>
                         <td>${index.index.substr(10)}</td>
@@ -103,8 +111,9 @@ const displayForecast = function (forecastData) {
                         <td>Ok</td>
                         </tr>`
                         break;
+                    // case: wind is between 30 and 40kmph
                     case (30 <= index.wind && 40 >= index.wind):
-                        console.log("Quite windy");
+                        //console.log("Quite windy");
                         activityRow.innerHTML = `
                         <tr>
                         <td>${index.index.substr(10)}</td>
@@ -114,8 +123,9 @@ const displayForecast = function (forecastData) {
                         <td>Risky</td>
                         </tr>`
                         break;
+                    // case: wind is pver 40kmph
                     case (40 <= index.wind):
-                        console.log("Too windy");
+                        //console.log("Too windy");
                         activityRow.innerHTML = `
                         <tr>
                         <td>${index.index.substr(10)}</td>
@@ -126,16 +136,17 @@ const displayForecast = function (forecastData) {
                         </tr>`
                         break;
                 };
-
                 break;
+            // case: min rain
             case (0.25 >= index.rain):
-                console.log("Light rain");
+                //console.log("Light rain");
 
                 //switch statment to check wind
                 console.log(index.wind); // to check what numbers need to be included
                 switch (true) { // based on the chance of wind
+                    //case: wind is less than 10kmph
                     case (10 >= index.wind):
-                        console.log("Not windy");
+                        //console.log("Not windy");
                         activityRow.innerHTML = `
                         <tr>
                         <td>${index.index.substr(10)}</td>
@@ -145,8 +156,9 @@ const displayForecast = function (forecastData) {
                         <td>Ok</td>
                         </tr>`
                         break;
+                    // case: wind is between 10 and 20kmph
                     case (10 <= index.wind && 20 >= index.wind):
-                        console.log("Not too windy");
+                        //console.log("Not too windy");
                         activityRow.innerHTML = `
                         <tr>
                         <td>${index.index.substr(10)}</td>
@@ -156,8 +168,9 @@ const displayForecast = function (forecastData) {
                         <td>Ok</td>
                         </tr>`
                         break;
+                    // case: wind is between 20 and 30kmph
                     case (20 <= index.wind && 30 >= index.wind):
-                        console.log("Kind of windy");
+                        //console.log("Kind of windy");
                         activityRow.innerHTML = `
                         <tr>
                         <td>${index.index.substr(10)}</td>
@@ -167,8 +180,9 @@ const displayForecast = function (forecastData) {
                         <td>Ok</td>
                         </tr>`
                         break;
+                    // case: wind is between 30 and 40kmph
                     case (30 <= index.wind && 40 >= index.wind):
-                        console.log("Quite windy");
+                        //console.log("Quite windy");
                         activityRow.innerHTML = `
                         <tr>
                         <td>${index.index.substr(10)}</td>
@@ -178,8 +192,9 @@ const displayForecast = function (forecastData) {
                         <td>Risky</td>
                         </tr>`
                         break;
+                    // case: wind is over 40kmph
                     case (40 <= index.wind):
-                        console.log("Too windy");
+                        //console.log("Too windy");
                         activityRow.innerHTML = `
                         <tr>
                         <td>${index.index.substr(10)}</td>
@@ -190,24 +205,16 @@ const displayForecast = function (forecastData) {
                         </tr>`
                         break;
                 };
-
                 break;
+            // case: light rain
             case (0.25 <= index.rain && 1 >= index.rain):
-                console.log("Mid rain");
-                activityRow.innerHTML = `
-                        <tr>
-                        <td>${index.index.substr(10)}</td>
-                        <td>Mid risk</td>
-                        <td>Mid risk</td>
-                        <td>Mid riskM</td>
-                        <td>Mid risk</td>
-                        </tr>`
-
+                //console.log("Mid rain");
+                
                 //switch statment to check wind
-                console.log(index.wind); // to check what numbers need to be included
                 switch (true) { // based on the chance of wind 
+                    // case: wind is less than 10kmph
                     case (10 >= index.wind):
-                        console.log("Not windy");
+                        //console.log("Not windy");
                         activityRow.innerHTML = `
                         <tr>
                         <td>${index.index.substr(10)}</td>
@@ -217,8 +224,9 @@ const displayForecast = function (forecastData) {
                         <td>Potential</td>
                         </tr>`
                         break;
+                    // case: wind is between 10 and 20kmph
                     case (10 <= index.wind && 20 >= index.wind):
-                        console.log("Not too windy");
+                        //console.log("Not too windy");
                         activityRow.innerHTML = `
                         <tr>
                         <td>${index.index.substr(10)}</td>
@@ -228,8 +236,9 @@ const displayForecast = function (forecastData) {
                         <td>Potential</td>
                         </tr>`
                         break;
+                    // case: wind is between 20 and 30kmph
                     case (20 <= index.wind && 30 >= index.wind):
-                        console.log("Kind of windy");
+                        //console.log("Kind of windy");
                         activityRow.innerHTML = `
                         <tr>
                         <td>${index.index.substr(10)}</td>
@@ -239,8 +248,9 @@ const displayForecast = function (forecastData) {
                         <td>Potential</td>
                         </tr>`
                         break;
+                    // case: wind is between 30 and 40kmph
                     case (30 <= index.wind && 40 >= index.wind):
-                        console.log("Quite windy");
+                        //console.log("Quite windy");
                         activityRow.innerHTML = `
                         <tr>
                         <td>${index.index.substr(10)}</td>
@@ -250,8 +260,9 @@ const displayForecast = function (forecastData) {
                         <td>Risky</td>
                         </tr>`
                         break;
+                    // case: wind is over 40kmph
                     case (40 <= index.wind):
-                        console.log("Too windy");
+                        //console.log("Too windy");
                         activityRow.innerHTML = `
                         <tr>
                         <td>${index.index.substr(10)}</td>
@@ -262,24 +273,16 @@ const displayForecast = function (forecastData) {
                         </tr>`
                         break;
                 };
-
                 break;
+            // case: raining
             case (1 <= index.rain):
-                console.log("Rain");
-                activityRow.innerHTML = `
-                    <tr>
-                    <td>${index.index.substr(10)}</td>
-                    <td>Risky</td>
-                    <td>Risky</td>
-                    <td>Risky</td>
-                    <td>Risky</td>
-                    </tr>`
-
+                //console.log("Rain");
+                
                 //switch statment to check wind
-                console.log(index.wind); // to check what numbers need to be included
                 switch (true) { // based on the chance of wind
+                    // case: wind is less than 10kmph
                     case (10 >= index.wind):
-                        console.log("Not windy");
+                        //console.log("Not windy");
                         activityRow.innerHTML = `
                         <tr>
                         <td>${index.index.substr(10)}</td>
@@ -289,8 +292,9 @@ const displayForecast = function (forecastData) {
                         <td>Risky</td>
                         </tr>`
                         break;
+                    // case: wind is between 10 and 20kmph
                     case (10 <= index.wind && 20 >= index.wind):
-                        console.log("Not too windy");
+                        //console.log("Not too windy");
                         activityRow.innerHTML = `
                         <tr>
                         <td>${index.index.substr(10)}</td>
@@ -300,6 +304,7 @@ const displayForecast = function (forecastData) {
                         <td>Risky</td>
                         </tr>`
                         break;
+                    // case: wind is between 20 and 30kmph
                     case (20 <= index.wind && 30 >= index.wind):
                         console.log("Kind of windy");
                         activityRow.innerHTML = `
@@ -311,8 +316,9 @@ const displayForecast = function (forecastData) {
                         <td>Risky</td>
                         </tr>`
                         break;
+                    // case: wind is between 30 and 40kmph
                     case (30 <= index.wind && 40 >= index.wind):
-                        console.log("Quite windy");
+                        //console.log("Quite windy");
                         activityRow.innerHTML = `
                         <tr>
                         <td>${index.index.substr(10)}</td>
@@ -322,6 +328,7 @@ const displayForecast = function (forecastData) {
                         <td>Unsafe</td>
                         </tr>`
                         break;
+                    // case: wind is over 40kmph
                     case (40 <= index.wind):
                         console.log("Too windy");
                         activityRow.innerHTML = `
@@ -334,13 +341,12 @@ const displayForecast = function (forecastData) {
                         </tr>`
                         break;
                 };
-
                 break;
         };
     });
 
-    //get tonights cloud cover for star gaxing and display information
-    const cloudTonight = function (forecastData) {
+    //fetch tonight's cloud cover and display data
+    const cloudTonight = function () {
         //isolate data
         const starTable = document.createElement('table');
         const star = document.querySelector(".star");
@@ -350,11 +356,10 @@ const displayForecast = function (forecastData) {
         const starTableHeading = document.createElement('tr');
         starTable.appendChild(starTableHeading);
         starTableHeading.innerHTML = `
-    <th>Time</th>
-    <th>Cloud</th>
-    <th>Rain</th>
-    <th>Prediction</th>
-    `
+            <th>Time</th>
+            <th>Cloud</th>
+            <th>Rain</th>
+            <th>Prediction</th>`;
         const starForecastArray = dailyForecastInfo.slice(21);
         console.log(starForecastArray);
 
@@ -462,7 +467,7 @@ const displayForecast = function (forecastData) {
         });
     };
 
-    cloudTonight(forecastData);
+    cloudTonight();
 };
 
 
