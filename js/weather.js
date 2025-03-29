@@ -1,7 +1,7 @@
 const weatherInfo = document.querySelector("#weatherInfo");
 const activitiesInfo = document.querySelector("#activitiesInfo");
 
-//function to fetch weather data
+//fetch the weather data
 const getWeatherData = async function () {
     const request = await fetch(`http://api.weatherapi.com/v1/current.json?key=935da16f3bf140a4872111650250201&q=Mallacoota&aqi=no`);
     const data = await request.json();
@@ -12,7 +12,7 @@ const getWeatherData = async function () {
 
 getWeatherData();
 
-//display the fetched Weather data
+//display the fetched weather data
 const displayWeatherData = function (data) {
     weatherInfo.innerHTML = `<p><span>Currently:</span> ${data.current.condition.text}</p>
     <p><span>Temperature:</span> ${data.current.temp_c} degrees</p>
