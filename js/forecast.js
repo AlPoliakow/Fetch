@@ -11,8 +11,6 @@ const getForecast = async function () {
     //console.log(forecastData.forecast.forecastday[1]);// gives tomorrow's forecast
     displayForecast(forecastData);
     sunriseTomorrow(forecastData);
-
-    rainToday(forecastData);
     //checkBoardWind(forecastData);
 };
 
