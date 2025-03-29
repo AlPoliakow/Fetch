@@ -275,11 +275,23 @@ footer{
    Modify as content requires.
    ========================================================================== */
 
-@media only screen and (min-width: 768px) {
+   @media only screen and (min-width: 768px) {
   /* Style adjustments for viewports that meet the condition (tablets +) */
-
+  
+  h1{
+    margin-top: 20px;
+  }
   section {
-    width: 75%;
+    width: 60%;
+    padding: 1.5em;
+  }
+
+  .activities {
+    margin: 20px 0 50px 35%; /* to position section to the right */
+  }
+
+  .weather {
+    margin-right: 35%; /* to position section to the left */
   }
 
   #activitiesPrediction{
@@ -289,16 +301,26 @@ footer{
   #activitiesInfo{
     width: 100%;
     display: flex;
+    justify-content: center;
     flex-flow: row wrap;
+    gap: 6%;
   }
 
   #activitiesInfo h3{
     margin: 20px 0;
   }
 
-  .starContainer,
+  table tr,
+table td {
+  padding: auto;
+  
+} 
+  .starContainer{
+    max-width: 52%;
+  }
+
   .sunriseContainer {
-    max-width: 50%;
+    max-width: 42%;
   }
 
   .sunriseContainer {
@@ -307,6 +329,10 @@ footer{
 
   .sunrise {
     margin: 0;
+  }
+
+  #forecastInfo {
+    margin-bottom: 20px;
   }
 
 }
