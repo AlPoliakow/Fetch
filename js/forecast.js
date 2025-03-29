@@ -490,11 +490,17 @@ const sunriseTomorrow = function (forecastData) {
     //display information
     const sunriseMessage = document.querySelector(".sunrise");
 
-    // if/else statement to list lowest value first
-    if (sunriseCloud <= sunriseWindowCloud) {
-    sunriseMessage.innerText = `Sunrise is at ${sunriseTomorrow} tomorrow and it will be ${sunriseCloud}-${sunriseWindowCloud}% cloudy`;
-    } else {
-        sunriseMessage.innerText = `Sunrise is at ${sunriseTomorrow} tomorrow and it will be ${sunriseWindowCloud}-${sunriseCloud}% cloudy`;
+    // switch statement to list lowest value first
+    switch(true){
+        case (sunriseCloud < sunriseWindowCloud):
+            sunriseMessage.innerText = `Sunrise is at ${sunriseTomorrow} tomorrow and it will be ${sunriseCloud}-${sunriseWindowCloud}% cloudy`;
+            break;
+        case (sunriseCloud > sunriseWindowCloud):
+            sunriseMessage.innerText = `Sunrise is at ${sunriseTomorrow} tomorrow and it will be ${sunriseWindowCloud}-${sunriseCloud}% cloudy`;
+            break;
+        case (sunriseCloud == sunriseWindowCloud):
+            sunriseMessage.innerText = `Sunrise is at ${sunriseTomorrow} tomorrow and it will be ${sunriseCloud}% cloudy`;
+            break;
     }
 };
 
