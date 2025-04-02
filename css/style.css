@@ -156,11 +156,16 @@ table {
 }
 
 table tr,
-table td {
+table td,
+table th {
   outline: 1px black solid;
   padding: 0.5em;
   
 } 
+
+table th {
+  border: 2px rgb(38, 189, 244) solid;
+}
 
 .today {
   margin-top:0;
