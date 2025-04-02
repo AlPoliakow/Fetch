@@ -84,7 +84,7 @@ textarea {
    Author's custom styles
    ========================================================================== */
 body {
-  width: 100%;
+  width: 100vw;
   height: 100%; /* percentage no vh to avoid gradient repeat */
   color: #000000;
   text-align: center;
@@ -103,7 +103,7 @@ header {
 }
 
 h1 {
-  padding: 20px;
+  padding: 30px 0 20px 0;
   margin: 0;
   font-size: 2.5em;
   font-family: "Cinzel", serif;
@@ -114,6 +114,7 @@ h1 {
 
 h2{
   margin: 10px 0;
+  text-transform: uppercase;
 }
 
 h3{
@@ -127,7 +128,7 @@ p{
 
 main {
   box-sizing: border-box;
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
@@ -141,7 +142,7 @@ section {
   justify-content: center;
   flex-flow: row wrap;
   margin: 0.5em;
-  padding: 1em 5px;
+  padding: 1em 5px 30px 5px;
   width: 100%;
   font-family: "Domine", serif;
   font-optical-sizing: auto;
@@ -165,10 +166,12 @@ table td {
   margin-top:0;
 }
 
+
 article {
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
+  margin-top: 20px;
 }
 
 #weatherInfo {
@@ -182,7 +185,7 @@ article {
 }
 
 footer{
-  padding: 30px;
+  padding: 15px;
 }
 
 /* ==========================================================================
